@@ -86,4 +86,67 @@
     });
     layout();
   }));
+
+  // Prompt + assets buttons, added to every card. publish.ps1 copies each project's PROMPT.md to
+  // prompts/<slug>.md and lists the slugs in prompts/index.json; a card without one says so in the button.
+  let prompts = null;
+  fetch('prompts/index.json').then((r) => (r.ok ? r.json() : [])).catch(() => []).then((l) => { prompts = l; });
+  const announce = document.querySelector('[data-announce]');
+  const modal = document.getElementById('assets-modal');
+  modal.addEventListener('click', (e) => { if (e.target === modal) modal.close(); });
+
+  // Swap the label and let the pill grow or shrink to fit it, then go back after a moment
+  const flash = (btn, text, state) => {
+    clearTimeout(btn._t);
+    const swap = (label, cls) => {
+      const from = btn.offsetWidth;
+      btn.style.width = '';
+      btn.textContent = label;
+      btn.className = btn.className.replace(/ is-\w+/g, '') + (cls ? ` is-${cls}` : '');
+      const to = btn.offsetWidth;
+      btn.style.width = `${from}px`;
+      btn.offsetWidth; // commit the start width so the change transitions
+      btn.style.width = `${to}px`;
+    };
+    swap(text, state);
+    announce.textContent = text;
+    btn._t = setTimeout(() => {
+      swap(btn.dataset.label, '');
+      btn._t = setTimeout(() => { btn.style.width = ''; }, 500);
+    }, 2400);
+  };
+
+  const copyPrompt = (slug) => {
+    const text = fetch(`prompts/${slug}.md`).then((r) => (r.ok ? r.text() : Promise.reject()));
+    // ClipboardItem takes the pending fetch, so Safari still counts the click as the user's gesture
+    if (window.ClipboardItem && navigator.clipboard && navigator.clipboard.write) {
+      return navigator.clipboard.write([new ClipboardItem({ 'text/plain': text.then((t) => new Blob([t], { type: 'text/plain' })) })]);
+    }
+    return text.then((t) => navigator.clipboard.writeText(t));
+  };
+
+  document.querySelectorAll('.card').forEach((card) => {
+    const slug = card.querySelector('.card__link').getAttribute('href').replace(/\/$/, '');
+    const name = card.querySelector('.card__title').textContent;
+    const row = document.createElement('div');
+    row.className = 'card__actions';
+    row.innerHTML = '<button class="pill pill--ghost pill--sm act" type="button" data-label="Copy prompt">Copy prompt</button>'
+      + '<button class="pill pill--ghost pill--sm act" type="button" data-label="Assets">Assets</button>';
+    const [promptBtn, assetsBtn] = row.children;
+    promptBtn.setAttribute('aria-label', `Copy the build prompt for ${name}`);
+    assetsBtn.setAttribute('aria-label', `Assets for ${name}`);
+    card.append(row);
+
+    promptBtn.addEventListener('click', () => {
+      if (prompts && !prompts.includes(slug)) return flash(promptBtn, 'Prompt not yet available', 'error');
+      copyPrompt(slug).then(
+        () => flash(promptBtn, 'Copied', 'ok'),
+        () => flash(promptBtn, 'Prompt not yet available', 'error'),
+      );
+    });
+    assetsBtn.addEventListener('click', () => {
+      modal.querySelector('[data-assets-name]').textContent = name;
+      modal.showModal();
+    });
+  });
 })();
