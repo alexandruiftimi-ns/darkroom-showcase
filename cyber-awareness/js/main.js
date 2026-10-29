@@ -1,4 +1,4 @@
-import { createFrameScrubber } from './scrub-frames.js?v=5';
+import { createFrameScrubber } from './scrub-frames.js?v=6';
 
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
@@ -30,12 +30,12 @@ paintChip();
    STOPS are the frame numbers (seq_XXXX, 1-based) picked by the client. A stop with a hand-finished still
    (seq/stops/stop-<n>.webp, web copies of the client's 4K masters in frames/) shows that still when the film reaches it.
    Solid mode: nothing is ever drawn see-through, it is always one whole frame or one still.
-   Scrolling is never blocked; when it rests inside the story it glides to the nearest stop in the direction of travel.
+   Scrolling is free: the film follows the scroll and rests wherever the scroll rests (SNAP = true glides to a stop).
    ===================================================================== */
 const STOPS = [5, 14.5, 26.2, 47.5, 67.5, 80.5, 91.5, 105.5, 127.5, 140.5, 151.5];
 const STILLS = STOPS.slice(1); // every stop after the opening frame has a finished still
 const stillDir = matchMedia('(max-width: 1023px)').matches ? 'seq/stops/mobile/' : 'seq/stops/';
-const SNAP = true; // client: scrolling is free, and when it rests inside the story it glides to a stop
+const SNAP = false; // 2026-10-29: off, the glide fought touch momentum and felt like a glitch on phones and desktop
 const N = STOPS.length;
 const story = $('#story');
 const canvas = $('.story__canvas', story);
@@ -82,7 +82,8 @@ chapters.forEach((ch) => {
 });
 const markEls = $$('li', marks);
 
-const geo = () => { const top = story.offsetTop; return { top, end: top + story.offsetHeight - innerHeight }; };
+// the sticky stage's height, not innerHeight, so the phone address bar showing/hiding doesn't shift the story
+const geo = () => { const top = story.offsetTop; return { top, end: top + story.offsetHeight - (canvas.clientHeight || innerHeight) }; };
 const storyProgress = () => { const g = geo(); return clamp((scrollY - g.top) / Math.max(1, g.end - g.top), 0, 1); };
 
 let storyRaf = 0;

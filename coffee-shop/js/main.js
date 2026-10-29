@@ -47,7 +47,7 @@ function pickSet(w, h) {
 // ---------- loading: blobs for every frame, a small window of decoded bitmaps ----------
 const media = {};
 function makeStore(set, kind) {
-  return { kind, set, blobs: new Array(N).fill(null), bmps: new Array(N).fill(null), decoding: new Map(), fetched: 0, started: false };
+  return { kind, set, blobs: new Array(N).fill(null), bmps: new Array(N).fill(null), decoding: new Map(), fetched: 0, started: false, dir: 1, last: -1, shown: -1 };
 }
 const url = (name, kind, i) => `media/${name}/${kind}/${String(i).padStart(3, '0')}.webp`;
 
@@ -71,15 +71,20 @@ async function fetchAll(store, name, onProgress) {
 }
 
 function want(store, centre, back, ahead) {
-  // decode a window around the wanted frame, release the rest
+  // decode a window around the wanted frame, `ahead` in the direction of travel (so scrolling back up has frames
+  // ready too), release the rest; the frame on screen and the frames between it and the wanted one stay
+  if (store.last >= 0 && centre !== store.last) store.dir = Math.sign(centre - store.last);
+  store.last = centre;
+  const lo = store.dir > 0 ? centre - back : centre - ahead, hi = store.dir > 0 ? centre + ahead : centre + back;
+  const pLo = Math.min(store.shown, centre), pHi = Math.max(store.shown, centre);
   for (let i = 0; i < N; i++) {
-    const keep = (i >= centre - back - 2 && i <= centre + ahead + 2) || i === LAST;
+    const keep = (i >= lo - 3 && i <= hi + 3) || (i >= pLo && i <= pHi) || i === LAST;
     if (!keep && store.bmps[i]) { store.bmps[i].close(); store.bmps[i] = null; }
   }
-  for (let d = 0; d <= Math.max(back, ahead); d++) {
-    for (const i of [centre + d, centre - d]) {
-      if (i < 0 || i >= N || (i > centre + ahead) || (i < centre - back)) continue;
-      if (store.bmps[i] || store.decoding.has(i) || !store.blobs[i] || store.decoding.size >= 3) continue;
+  for (let d = 0; d <= ahead; d++) {
+    for (const i of [centre + store.dir * d, centre - store.dir * d]) {
+      if (i < lo || i > hi || i < 0 || i >= N) continue;
+      if (store.bmps[i] || store.decoding.has(i) || !store.blobs[i] || store.decoding.size >= 4) continue;
       store.decoding.set(i, createImageBitmap(store.blobs[i]).then((b) => { store.bmps[i] = b; store.decoding.delete(i); requestRender(); }, () => store.decoding.delete(i)));
     }
   }
@@ -88,11 +93,27 @@ function nearest(store, i) {
   for (let d = 0; d < N; d++) { if (store.bmps[i - d]) return i - d; if (store.bmps[i + d]) return i + d; }
   return -1;
 }
+// frame i if it's decoded; else the decoded frame closest to i on the way there from the one on screen, so a fast
+// scroll holds or moves on and never flashes a frame from the other side of the clip
+function pick(store, i) {
+  if (store.bmps[i]) return i;
+  const from = store.shown;
+  if (from < 0 || !store.bmps[from]) return nearest(store, i);
+  let best = from;
+  for (let k = from, s = Math.sign(i - from); k !== i; k += s) if (store.bmps[k]) best = k;
+  return best;
+}
 
 async function loadBitmap(src) { return createImageBitmap(await (await fetch(src)).blob()); }
 
 // ---------- sizing ----------
+let measured = '';
 function measure() {
+  // phones fire resize whenever the address bar shows or hides (every scroll back up); the stage is 100lvh, so
+  // nothing changed and redoing the canvases and the blurred shadow sprite mid-scroll only cost frames
+  const size = `${innerWidth}|${stage.clientHeight}|${devicePixelRatio}|${nav.offsetHeight}`;
+  if (size === measured) return;
+  measured = size;
   vw = innerWidth; vh = stage.clientHeight; dpr = Math.min(devicePixelRatio || 1, DPR_CAP);
   navH = nav.offsetHeight;
   const next = pickSet(vw, vh);
@@ -270,9 +291,9 @@ function loop(t) {
     if (merged) drawHero('composite', composite(M));
     else if (layered) drawHero('plate', M.plate);
     else {
-      want(M.f, fi, 4, 9);
-      const use = M.f.bmps[fi] ? fi : nearest(M.f, fi);
-      if (use >= 0) drawHero('f' + use, M.f.bmps[use]);
+      want(M.f, fi, 6, 12);
+      const use = pick(M.f, fi);
+      if (use >= 0) { drawHero('f' + use, M.f.bmps[use]); M.f.shown = use; }
     }
   }
   if (!layered) { // where the cup is on screen, for QA
@@ -291,7 +312,8 @@ function loop(t) {
   const k = lerp(k0, L.k, d), ax = lerp(ax0, L.cx, d), ay = lerp(ay0, L.cy, d);
 
   want(M.cup, sq.i, 6, 8);
-  const ci = M.cup.bmps[sq.i] ? sq.i : (sq.i === LAST ? -1 : nearest(M.cup, sq.i));
+  const ci = M.cup.bmps[sq.i] ? sq.i : (sq.i === LAST ? -1 : pick(M.cup, sq.i));
+  if (ci >= 0) M.cup.shown = ci;
   const bmp = sq.i === LAST || ci < 0 ? M.cutLast : M.cup.bmps[ci];
   const cell = S.cells[bmp === M.cutLast ? LAST : ci];
   QA.rect = { phase: d > 0 ? 'fall' : 'handoff', fi: sq.i, cx: ax, cy: ay, w: cell.w * k, h: cell.h * k, d };
