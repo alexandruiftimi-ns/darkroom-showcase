@@ -53,17 +53,37 @@
     })
     .catch(() => {});
 
+  // An odd card left alone on the last row spans both columns, with its title over the preview.
+  // Cards without a hand-written .wide overlay get one from their title and description.
+  const twoCols = matchMedia('(min-width: 901px)');
+  const layout = () => {
+    const cards = document.querySelectorAll('.card');
+    const shown = [...cards].filter((c) => !c.hidden);
+    cards.forEach((c) => c.classList.toggle('card--wide', twoCols.matches && shown.length % 2 === 1 && c === shown.at(-1)));
+    const wide = document.querySelector('.card--wide');
+    if (wide && !wide.querySelector('.wide')) {
+      const box = document.createElement('div');
+      box.className = 'wide';
+      box.innerHTML = '<p class="wide__title" aria-hidden="true"></p><p class="wide__desc"></p>';
+      box.firstChild.textContent = wide.querySelector('.card__title').textContent;
+      box.lastChild.textContent = wide.querySelector('.card__desc').textContent;
+      wide.querySelector('.card__cta').before(box);
+    }
+  };
+  layout();
+  twoCols.addEventListener('change', layout);
+
   // Filters
   const chips = document.querySelectorAll('.chip');
-  const cards = document.querySelectorAll('.card');
   chips.forEach((chip) => chip.addEventListener('click', () => {
     const f = chip.dataset.filter;
     chips.forEach((c) => {
       c.classList.toggle('is-on', c === chip);
       c.setAttribute('aria-pressed', c === chip);
     });
-    cards.forEach((card) => {
+    document.querySelectorAll('.card').forEach((card) => {
       card.hidden = f !== 'all' && !card.dataset.kind.split(' ').includes(f);
     });
+    layout();
   }));
 })();
