@@ -1,12 +1,196 @@
-﻿<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Landing Pages</title>
-<style>body{font:18px/1.6 system-ui,sans-serif;max-width:40rem;margin:4rem auto;padding:0 1rem;background:#fff;color:#111}
-a{color:inherit}@media (prefers-color-scheme:dark){body{background:#111;color:#eee}}</style></head>
-<body><h1>Landing Pages</h1><ul>
-    <li><a href="mesa/">Mesa</a></li>
-    <li><a href="cyber-awareness/">Cyber Awareness</a></li>
-    <li><a href="humming-bird/">Humming Bird</a></li>
-    <li><a href="coffee-shop/">Coffee Shop</a></li>
-    <li><a href="style-up/">Style Up</a></li>
-</ul></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>North Shutter — Cinematic website templates</title>
+  <meta name="description" content="Cinematic, scroll-driven website templates by North Shutter. Open a live demo, scroll it, judge it yourself.">
+  <meta name="author" content="Iftimi Alexandru Paul">
+  <meta name="theme-color" content="#070708">
+  <meta property="og:title" content="North Shutter — Cinematic website templates">
+  <meta property="og:description" content="Scroll-driven website templates with live demos.">
+  <meta property="og:image" content="media/cyber-awareness.webp">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23f3f1ec'/%3E%3Cpath d='M16 6v10M16 16l8.7 5M16 16l-8.7 5' stroke='%23070708' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="preload" href="fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+  <a class="skip" href="#templates">Skip to templates</a>
+
+  <header class="nav">
+    <a class="brand" href="#top" aria-label="North Shutter, back to top">
+      <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8"/><path d="M16 6v10M16 16l8.7 5M16 16l-8.7 5"/></svg>
+      North Shutter
+    </a>
+    <nav class="nav__links" aria-label="Sections">
+      <a href="#templates">Templates</a>
+      <a href="#principles">Principles</a>
+      <a href="#about">About</a>
+    </nav>
+    <a class="pill pill--light pill--sm" href="https://dev.northshutter.eu" target="_blank" rel="noopener">Portfolio <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="aurora" aria-hidden="true">
+        <span class="aurora__blob aurora__blob--amber"></span>
+        <span class="aurora__blob aurora__blob--blue"></span>
+        <span class="aurora__blob aurora__blob--cyan"></span>
+        <span class="aurora__blob aurora__blob--lime"></span>
+      </div>
+      <div class="hero__inner">
+        <p class="tag" data-rise><span class="tag__dot"></span>4 live demos · 1 in production</p>
+        <h1 class="hero__title">
+          <span class="line"><span data-word>Websites</span> <span data-word>shot</span></span>
+          <span class="line"><span data-word>like</span> <span data-word>a</span> <span data-word class="grad">film.</span></span>
+        </h1>
+        <p class="hero__lede" data-rise>Cinematic, scroll-driven templates by North Shutter. Every one is live: open the demo, scroll it, judge it yourself.</p>
+        <div class="hero__ctas" data-rise>
+          <a class="pill pill--light" href="#templates">See the templates <span aria-hidden="true">↓</span></a>
+          <a class="pill pill--ghost" href="https://dev.northshutter.eu" target="_blank" rel="noopener">Visit the portfolio <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="work" id="templates" aria-labelledby="work-title">
+      <div class="work__head">
+        <h2 id="work-title" class="kicker">The templates</h2>
+        <div class="filters" role="group" aria-label="Filter templates">
+          <button class="chip is-on" data-filter="all" aria-pressed="true">All</button>
+          <button class="chip" data-filter="cinematic" aria-pressed="false">Cinematic</button>
+          <button class="chip" data-filter="storefront" aria-pressed="false">Storefront</button>
+          <button class="chip" data-filter="soon" aria-pressed="false">Coming soon</button>
+        </div>
+      </div>
+
+      <div class="grid">
+        <article class="card" data-kind="cinematic" data-reveal>
+          <a class="card__link" href="https://alexandruiftimi-ns.github.io/landing-pages/cyber-awareness/" target="_blank" rel="noopener">
+            <div class="card__media">
+              <video data-src="media/cyber-awareness" poster="media/cyber-awareness.webp" muted loop playsinline preload="none" aria-hidden="true"></video>
+              <span class="card__cta">Open live demo <span aria-hidden="true">↗</span></span>
+            </div>
+            <div class="card__meta">
+              <span class="card__num">01</span>
+              <div>
+                <h3 class="card__title">Cyber Awareness</h3>
+                <p class="card__desc">A neon night-city story that teaches people to spot phishing, with a password drill and a security score.</p>
+              </div>
+              <span class="card__type">Cinematic · Education</span>
+            </div>
+          </a>
+        </article>
+
+        <article class="card" data-kind="cinematic" data-reveal>
+          <a class="card__link" href="https://alexandruiftimi-ns.github.io/landing-pages/humming-bird/" target="_blank" rel="noopener">
+            <div class="card__media">
+              <video data-src="media/humming-bird" poster="media/humming-bird.webp" muted loop playsinline preload="none" aria-hidden="true"></video>
+              <span class="card__cta">Open live demo <span aria-hidden="true">↗</span></span>
+            </div>
+            <div class="card__meta">
+              <span class="card__num">02</span>
+              <div>
+                <h3 class="card__title">Humming Bird</h3>
+                <p class="card__desc">An editorial nature story: one hummingbird, slowed from flight to a perch as you scroll.</p>
+              </div>
+              <span class="card__type">Cinematic · Story</span>
+            </div>
+          </a>
+        </article>
+
+        <article class="card" data-kind="storefront" data-reveal>
+          <a class="card__link" href="https://alexandruiftimi-ns.github.io/landing-pages/coffee-shop/" target="_blank" rel="noopener">
+            <div class="card__media">
+              <video data-src="media/coffee-shop" poster="media/coffee-shop.webp" muted loop playsinline preload="none" aria-hidden="true"></video>
+              <span class="card__cta">Open live demo <span aria-hidden="true">↗</span></span>
+            </div>
+            <div class="card__meta">
+              <span class="card__num">03</span>
+              <div>
+                <h3 class="card__title">Coffee Shop</h3>
+                <p class="card__desc">A warm café site with menu, locations and contact, and a cup that follows you down the page.</p>
+              </div>
+              <span class="card__type">Storefront · Café</span>
+            </div>
+          </a>
+        </article>
+
+        <article class="card" data-kind="storefront" data-reveal>
+          <a class="card__link" href="https://alexandruiftimi-ns.github.io/landing-pages/style-up/" target="_blank" rel="noopener">
+            <div class="card__media">
+              <video data-src="media/style-up" poster="media/style-up.webp" muted loop playsinline preload="none" aria-hidden="true"></video>
+              <span class="card__cta">Open live demo <span aria-hidden="true">↗</span></span>
+            </div>
+            <div class="card__meta">
+              <span class="card__num">04</span>
+              <div>
+                <h3 class="card__title">Style Up</h3>
+                <p class="card__desc">A streetwear store with layered product reveals and a radar-style store finder.</p>
+              </div>
+              <span class="card__type">Storefront · Fashion</span>
+            </div>
+          </a>
+        </article>
+
+        <article class="card card--soon" data-kind="soon cinematic" data-reveal>
+          <div class="card__media">
+            <video data-src="media/mesa" poster="media/mesa.webp" muted loop playsinline preload="none" aria-hidden="true"></video>
+            <div class="soon">
+              <span class="tag"><span class="tag__dot tag__dot--amber"></span>Coming soon</span>
+              <p class="soon__title" aria-hidden="true">Mesa</p>
+              <p class="soon__desc">A quiet-luxury house where two hands meet as your cursor moves closer.</p>
+            </div>
+          </div>
+          <div class="card__meta">
+            <span class="card__num">05</span>
+            <div>
+              <h3 class="card__title">Mesa</h3>
+              <p class="card__desc">In production. The demo opens here when it is ready.</p>
+            </div>
+            <span class="card__type">Cinematic · Luxury</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="principles" id="principles" aria-labelledby="principles-title">
+      <h2 id="principles-title" class="principles__title" data-reveal>Spectacle on top.<br><span class="dim">Things that work underneath.</span></h2>
+      <ol class="principles__list">
+        <li data-reveal>
+          <span class="card__num">01</span>
+          <h3>Native scroll</h3>
+          <p>The wheel is never hijacked. Every scene follows your scroll and plays back in reverse when you scroll up.</p>
+        </li>
+        <li data-reveal>
+          <span class="card__num">02</span>
+          <h3>Built for phones too</h3>
+          <p>Each demo has its own phone layout and lighter media, not a shrunken desktop.</p>
+        </li>
+        <li data-reveal>
+          <span class="card__num">03</span>
+          <h3>Calm when asked</h3>
+          <p>Visitors who turn motion off get a still, finished page. Nothing breaks without the animation.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="about" id="about" aria-labelledby="about-title" data-reveal>
+      <p class="kicker">Designed and built by</p>
+      <h2 id="about-title" class="about__name">Iftimi Alexandru Paul</h2>
+      <p class="about__text">Designer and developer behind North Shutter. Want one of these for your brand, or something new?</p>
+      <a class="pill pill--light" href="https://dev.northshutter.eu" target="_blank" rel="noopener">dev.northshutter.eu <span aria-hidden="true">↗</span></a>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p class="foot__word" aria-hidden="true">North Shutter</p>
+    <div class="foot__row">
+      <span>© 2026 North Shutter · Iftimi Alexandru Paul</span>
+      <a href="#top">Back to top <span aria-hidden="true">↑</span></a>
+    </div>
+  </footer>
+
+  <script src="main.js" defer></script>
+</body>
+</html>

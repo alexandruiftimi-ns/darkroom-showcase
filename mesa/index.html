@@ -1,1 +1,177 @@
-﻿<!doctype html><meta charset="utf-8"><title>Maison Solène</title><body style="background:#0b0b0c;color:#d8b36a;font-family:serif;display:grid;place-items:center;height:100vh;margin:0">Maison Solène — building…</body>
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Maison Solène — Paris</title>
+  <meta name="description" content="Maison Solène, haute parfumerie, Paris. Lumière, Ombre and Le Toucher. Two souls. One touch.">
+  <meta name="theme-color" content="#0b0a09">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230b0a09'/%3E%3Ccircle cx='16' cy='16' r='5' fill='%23e6cf9a'/%3E%3C/svg%3E">
+  <link rel="preload" as="image" href="frames/desktop/f001.webp" media="(min-aspect-ratio: 1/1), (min-width: 901px)">
+  <link rel="preload" as="image" href="frames/mobile/f001.webp" media="(max-aspect-ratio: 1/1) and (max-width: 900px)">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- HERO: cursor-driven frame sequence (scroll-driven on touch devices) -->
+  <section class="hero" id="hero" aria-label="Maison Solène">
+    <div class="hero__stage">
+      <canvas class="hero__canvas" aria-hidden="true"></canvas>
+      <div class="hero__glow" aria-hidden="true"></div>
+      <div class="hero__pulse" aria-hidden="true"></div>
+      <div class="hero__shade" aria-hidden="true"></div>
+
+      <header class="nav">
+        <a class="nav__mark" href="#hero">Maison Solène</a>
+        <nav aria-label="Primary">
+          <a href="#parfums">Les Parfums</a>
+          <a href="#toucher">Le Toucher</a>
+          <a href="#atelier">L’Atelier</a>
+          <a href="#decouverte">Rendez-vous</a>
+        </nav>
+      </header>
+
+      <div class="hero__title">
+        <h1>Maison Solène</h1>
+        <p class="hero__tagline">Two souls. One touch.</p>
+      </div>
+
+      <p class="hero__hint"><span class="hint--pointer">Move toward the light</span><span class="hint--touch">Scroll toward the light</span></p>
+    </div>
+  </section>
+  <div class="cursor" aria-hidden="true"></div>
+
+  <main>
+    <!-- 1. THE TWO SCENTS -->
+    <section class="scents" id="parfums" aria-label="Les Parfums">
+      <article class="scent scent--lumiere">
+        <p class="eyebrow reveal">N° 1 · Eau de Parfum</p>
+        <div class="scent__bottle" data-parallax="-0.10">
+          <div class="float">
+            <img src="assets/bottles/lumiere.svg" alt="Lumière, ivory glass with a gold cap" width="200" height="380">
+          </div>
+          <span class="scent__shadow"></span>
+        </div>
+        <h2 class="scent__name reveal">Lumière</h2>
+        <p class="scent__desc reveal" style="--d:.12s">Morning light across a linen sheet. Lumière opens bright, almost weightless, then settles into the warmth of skin like sun that has nowhere left to go.</p>
+        <dl class="notes reveal" style="--d:.24s">
+          <div><dt>Top</dt><dd>Bergamot, neroli, pink pepper</dd></div>
+          <div><dt>Heart</dt><dd>Jasmine sambac, orris, white peony</dd></div>
+          <div><dt>Base</dt><dd>White musk, ambrette, cashmere wood</dd></div>
+        </dl>
+      </article>
+
+      <article class="scent scent--ombre">
+        <p class="eyebrow reveal">N° 2 · Eau de Parfum</p>
+        <div class="scent__bottle" data-parallax="-0.16">
+          <div class="float float--late">
+            <img src="assets/bottles/ombre.svg" alt="Ombre, smoked charcoal glass with a gold collar" width="200" height="380">
+          </div>
+          <span class="scent__shadow"></span>
+        </div>
+        <h2 class="scent__name reveal">Ombre</h2>
+        <p class="scent__desc reveal" style="--d:.12s">The hour after the candles go out. Ombre is smoke and polished wood, close and unhurried, a scent that keeps its own counsel.</p>
+        <dl class="notes reveal" style="--d:.24s">
+          <div><dt>Top</dt><dd>Black pepper, cardamom, saffron</dd></div>
+          <div><dt>Heart</dt><dd>Smoked birch, leather, iris</dd></div>
+          <div><dt>Base</dt><dd>Oud, vetiver, labdanum</dd></div>
+        </dl>
+      </article>
+    </section>
+
+    <!-- 2. LE TOUCHER: the two bottles meet -->
+    <section class="toucher" id="toucher" aria-label="Le Toucher">
+      <div class="toucher__stage">
+        <p class="toucher__intro eyebrow">Lumière <span>+</span> Ombre</p>
+        <div class="toucher__burst" aria-hidden="true"></div>
+        <img class="tb tb--lumiere" src="assets/bottles/lumiere.svg" alt="" aria-hidden="true">
+        <img class="tb tb--ombre" src="assets/bottles/ombre.svg" alt="" aria-hidden="true">
+        <img class="tb tb--toucher" src="assets/bottles/toucher.svg" alt="Le Toucher, black glass with gold cap and gold edge">
+        <div class="toucher__text">
+          <p class="eyebrow">N° 3 · Extrait de Parfum</p>
+          <h2>Le Toucher</h2>
+          <p>Lumière’s jasmine laid over Ombre’s smoked woods, joined by a single drop of golden benzoin. Neither light nor shadow. The moment between.</p>
+          <p class="toucher__notes">Neroli · Saffron — Jasmine · Iris — Oud · Benzoin · Musk</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. THE ATELIER -->
+    <section class="atelier" id="atelier" aria-label="L’Atelier">
+      <p class="eyebrow reveal">L’Atelier · Rue de Valois, Paris</p>
+      <blockquote class="atelier__quote reveal">
+        <p>“A perfume is not worn.<br>It is <em>met</em>.”</p>
+        <cite>Solène Arnaud, founder</cite>
+      </blockquote>
+
+      <div class="atelier__cols">
+        <p class="reveal">Maison Solène was opened in a narrow workshop off the Palais-Royal, with one perfumer, one organ of raw materials and a belief that a scent should take its time. It still does. Each composition rests for twelve weeks before it is bottled, and nothing leaves the atelier until it has been worn for a full day.</p>
+        <p class="reveal" style="--d:.12s">We work in small batches and buy from the same growers each season: jasmine picked before dawn in Grasse, iris roots aged three years in Tuscany, oud from a single family in Laos. The flacons are blown in Normandy and finished by hand in Paris, the gold applied one line at a time.</p>
+      </div>
+
+      <blockquote class="atelier__quote atelier__quote--small reveal">
+        <p>“Light needs shadow to be seen.”</p>
+      </blockquote>
+
+      <ol class="ingredients">
+        <li class="reveal"><span class="num">I</span><span class="ing">Jasmine sambac</span><span class="origin">Grasse, France</span></li>
+        <li class="reveal" style="--d:.06s"><span class="num">II</span><span class="ing">Orris butter</span><span class="origin">Tuscany, Italy</span></li>
+        <li class="reveal" style="--d:.12s"><span class="num">III</span><span class="ing">Bergamot</span><span class="origin">Calabria, Italy</span></li>
+        <li class="reveal" style="--d:.18s"><span class="num">IV</span><span class="ing">Oud</span><span class="origin">Champasak, Laos</span></li>
+        <li class="reveal" style="--d:.24s"><span class="num">V</span><span class="ing">Vetiver</span><span class="origin">Haiti</span></li>
+        <li class="reveal" style="--d:.30s"><span class="num">VI</span><span class="ing">Siam benzoin</span><span class="origin">Luang Prabang, Laos</span></li>
+      </ol>
+    </section>
+
+    <!-- 4. DISCOVERY -->
+    <section class="discovery" id="decouverte" aria-label="Discover the house">
+      <h2 class="discovery__title reveal">Come and meet them.</h2>
+
+      <div class="discovery__grid">
+        <div class="offer reveal">
+          <p class="eyebrow">In Paris</p>
+          <h3>A private appointment</h3>
+          <p>One hour in our salon on the Rue de Valois with a perfumer of the house. We will wear all three with you, slowly, and find the one that is yours.</p>
+          <form class="form" id="appointment" novalidate>
+            <label><span>Name</span><input name="name" autocomplete="name" required></label>
+            <label><span>Email</span><input name="email" type="email" autocomplete="email" required></label>
+            <label><span>Preferred date</span><input name="date" type="date" required></label>
+            <button class="btn" type="submit">Request an appointment</button>
+            <p class="form__note" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+
+        <div class="offer reveal" style="--d:.12s">
+          <p class="eyebrow">Anywhere</p>
+          <h3>The discovery set</h3>
+          <p>Lumière, Ombre and Le Toucher in three 10 ml flacons, in a linen-bound case. The price is returned to you against your first full bottle.</p>
+          <div class="set">
+            <img src="assets/bottles/lumiere.svg" alt="" width="200" height="380">
+            <img src="assets/bottles/toucher.svg" alt="" width="200" height="380">
+            <img src="assets/bottles/ombre.svg" alt="" width="200" height="380">
+          </div>
+          <p class="price">€95</p>
+          <button class="btn" type="button" id="order-set">Order the discovery set</button>
+          <p class="form__note" id="order-note" role="status" aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 5. FOOTER -->
+  <footer class="footer">
+    <p class="footer__mark">Maison Solène</p>
+    <div class="footer__row">
+      <p>12 Rue de Valois<br>75001 Paris</p>
+      <p><a href="mailto:salon@maisonsolene.example">salon@maisonsolene.example</a><br>Tuesday to Saturday, 11h–19h</p>
+      <p><a href="#">Instagram</a><br><a href="#">Mentions légales</a></p>
+    </div>
+    <p class="footer__small">© 2026 Maison Solène · A fictional house</p>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
