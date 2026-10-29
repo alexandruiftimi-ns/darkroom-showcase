@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>IRIS/09 — AI, driven by a human mind</title>
+  <meta name="description" content="IRIS/09 is a synthetic analyst. She reads the open world at machine speed. Every question she answers began as a human one.">
+  <meta name="theme-color" content="#04050a">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%275%27 fill=%27%237df9ff%27/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script type="importmap">{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js", "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/" } }</script>
+  <script type="module" src="js/main.js"></script>
+</head>
+<body data-active="0">
+  <canvas id="scene" aria-hidden="true"></canvas>
+  <div class="fallback" aria-hidden="true"></div>
+
+  <!-- Liquid-glass refraction (Chromium only, see .lg-refract) -->
+  <svg class="sr-only" aria-hidden="true" focusable="false">
+    <filter id="lg-distort" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.008 0.012" numOctaves="2" seed="7" result="n"/>
+      <feGaussianBlur in="n" stdDeviation="2" result="nb"/>
+      <feDisplacementMap in="SourceGraphic" in2="nb" scale="26" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </svg>
+
+  <header class="header">
+    <a class="brand" href="#" data-goto="0" aria-label="IRIS/09 home">
+      <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="13" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="16" cy="16" r="5.5" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="16" cy="16" r="1.8" fill="currentColor"/></svg>
+      <span>IRIS<span class="brand__slash">/09</span></span>
+    </a>
+
+    <nav class="nav glass" aria-label="Chapters">
+      <span class="nav__lens" aria-hidden="true"></span>
+      <ol class="nav__list">
+        <li><a href="#ch-0" data-goto="0">IRIS</a></li>
+        <li><a href="#ch-1" data-goto="1">Origin</a></li>
+        <li><a href="#ch-2" data-goto="2">Lattice</a></li>
+        <li><a href="#ch-3" data-goto="3">Sight</a></li>
+        <li><a href="#ch-4" data-goto="4">World</a></li>
+      </ol>
+    </nav>
+
+    <div class="header__end">
+      <span class="clock mono" data-clock>UTC --:--:--</span>
+      <button class="icon-btn glass" type="button" data-randomize aria-label="Generate a new liquid backdrop" title="New liquid">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c3.5 4.2 6 7.4 6 10.5a6 6 0 0 1-12 0C6 10.4 8.5 7.2 12 3Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9.5 14.5a2.6 2.6 0 0 0 2.5 2.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </button>
+      <button class="btn glass btn--accent hide-sm" type="button" data-open-access>Request access</button>
+      <button class="icon-btn glass menu-btn" type="button" aria-expanded="false" aria-controls="menu" aria-label="Menu">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9h14M5 15h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+
+    <div class="menu glass" id="menu">
+      <a href="#ch-0" data-goto="0"><span class="mono">00</span> IRIS</a>
+      <a href="#ch-1" data-goto="1"><span class="mono">01</span> Origin</a>
+      <a href="#ch-2" data-goto="2"><span class="mono">02</span> Lattice</a>
+      <a href="#ch-3" data-goto="3"><span class="mono">03</span> Sight</a>
+      <a href="#ch-4" data-goto="4"><span class="mono">04</span> World</a>
+      <button class="btn glass btn--accent" type="button" data-open-access>Request access</button>
+    </div>
+  </header>
+
+  <div class="rail" aria-hidden="true"><span class="rail__fill"></span></div>
+
+  <main>
+    <!-- 00 · Hero -->
+    <section class="chapter chapter--hero" id="ch-0" data-chapter aria-labelledby="h-0">
+      <div class="hero__copy">
+        <p class="eyebrow mono"><span class="pulse" aria-hidden="true"></span> IRIS/09 · Synthetic analyst · Online</p>
+        <h1 id="h-0" class="display">AI, driven<br>by a <em>human mind.</em></h1>
+        <p class="lede">IRIS works at machine speed, and every question she answers started as a human one. Move your cursor and she'll turn to watch.</p>
+        <div class="actions">
+          <a class="btn glass btn--accent" href="#ch-1" data-goto="1">Enter the mind</a>
+          <button class="btn glass" type="button" data-open-access>Request access</button>
+        </div>
+      </div>
+
+      <aside class="dossier glass" aria-label="Character file">
+        <header class="dossier__head mono"><span>Subject file</span><span class="chip">IRIS/09</span></header>
+        <dl class="dossier__list">
+          <div><dt>Build</dt><dd>Synthetic analyst, gen 4</dd></div>
+          <div><dt>Tails</dt><dd>Carbon filament, 2.1 m, held up by a static field</dd></div>
+          <div><dt>Wardrobe</dt><dd>Techwear shell, comms collar</dd></div>
+          <div><dt>Trained on</dt><dd>40,000 hours of human analysts' decisions</dd></div>
+        </dl>
+      </aside>
+
+      <a class="scroll-cue mono" href="#ch-1" data-goto="1"><span>Scroll to go inside</span><i aria-hidden="true"></i></a>
+    </section>
+
+    <!-- 01 · Origin -->
+    <section class="chapter chapter--left" id="ch-1" data-chapter aria-labelledby="h-1">
+      <div class="copy">
+        <p class="index mono">01 <i></i> Origin</p>
+        <h2 id="h-1" class="display">Every model begins as someone's question.</h2>
+        <p>Nobody taught IRIS to be curious. She picked it up from the analysts who sat next to her: what they doubted, what they chased, and when they stopped. The mind sets the direction and the machine covers the distance.</p>
+        <ul class="stats">
+          <li class="glass"><b>100%</b><span>of objectives set by a person</span></li>
+          <li class="glass"><b>1 : 1</b><span>a human signs off on every call</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 02 · Lattice -->
+    <section class="chapter chapter--right" id="ch-2" data-chapter aria-labelledby="h-2">
+      <div class="copy">
+        <p class="index mono">02 <i></i> Lattice</p>
+        <h2 id="h-2" class="display">Intent, wired into a lattice.</h2>
+        <p>Questions turn into weights, and weights turn into instinct. Each layer folds human judgment into something that runs a billion times a second and still answers to the person who asked.</p>
+        <figure class="chart glass">
+          <figcaption class="chart__head">
+            <span>Model confidence vs. analyst agreement</span>
+            <span class="chip mono">Illustrative</span>
+          </figcaption>
+          <svg viewBox="0 0 300 120" preserveAspectRatio="none" role="img" aria-label="Line chart: model confidence and analyst agreement both rise over twelve training rounds and end close together.">
+            <g class="chart__grid"><line x1="0" y1="30" x2="300" y2="30"/><line x1="0" y1="60" x2="300" y2="60"/><line x1="0" y1="90" x2="300" y2="90"/></g>
+            <polyline pathLength="1" class="chart__line chart__line--a" points="0,104 27,98 55,90 82,84 109,70 136,62 164,52 191,44 218,36 245,30 273,26 300,22"/>
+            <polyline pathLength="1" class="chart__line chart__line--b" points="0,110 27,108 55,100 82,96 109,86 136,74 164,64 191,52 218,42 245,34 273,28 300,25"/>
+          </svg>
+          <div class="chart__legend mono"><span class="lg-a">Confidence</span><span class="lg-b">Agreement</span><span>12 rounds</span></div>
+        </figure>
+      </div>
+    </section>
+
+    <!-- 03 · Sight -->
+    <section class="chapter chapter--left" id="ch-3" data-chapter aria-labelledby="h-3">
+      <div class="copy">
+        <p class="index mono">03 <i></i> Sight</p>
+        <h2 id="h-3" class="display">She reads what the world leaves in the open.</h2>
+        <p>Open-source intelligence is the trail people leave in public: posts, certificates, ship transponders, exposed ports, satellite passes. IRIS watches all of it at once, and analysts decide what it means.</p>
+        <ul class="sources" aria-label="Open sources IRIS reads">
+          <li class="glass">Certificate logs</li>
+          <li class="glass">Paste sites</li>
+          <li class="glass">AIS ship signals</li>
+          <li class="glass">Exposed services</li>
+          <li class="glass">Satellite passes</li>
+          <li class="glass">Public filings</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- 04 · World (footer) -->
+  <footer class="chapter chapter--world" id="ch-4" data-chapter aria-labelledby="h-4">
+    <div class="world__intro">
+      <p class="index mono">04 <i></i> World</p>
+      <h2 id="h-4" class="display">The world, read in real time.</h2>
+      <p>Each arc is a signal a person left behind, and a person will act on it. AI gives open-source intelligence its speed. The human mind gives it a reason.</p>
+      <form class="brief glass hide-sm" data-form data-success="Briefing requested. Check your inbox." novalidate>
+        <label class="sr-only" for="brief-email">Work email</label>
+        <input class="field" id="brief-email" name="email" type="email" placeholder="Work email" autocomplete="email" required>
+        <button class="btn glass btn--accent" type="submit">Request a briefing</button>
+      </form>
+      <button class="btn glass btn--accent show-sm" type="button" data-open-access>Request a briefing</button>
+    </div>
+
+    <section class="feed glass" aria-label="Simulated threat feed">
+      <header class="feed__head">
+        <span><span class="pulse pulse--hot" aria-hidden="true"></span> Threat feed</span>
+        <span class="chip mono">Simulated</span>
+      </header>
+      <div class="feed__metrics">
+        <div><b data-rate>0</b><span class="mono">events / min</span></div>
+        <div><b data-total>0</b><span class="mono">today</span></div>
+        <svg class="spark" data-spark viewBox="0 0 100 30" preserveAspectRatio="none" aria-hidden="true">
+          <polygon class="spark__area" points="0,30 100,30"/><polyline class="spark__line" points="0,30 100,30"/>
+        </svg>
+      </div>
+      <div class="sev" aria-label="Severity mix">
+        <div class="sev__bar"><i class="sev-1" data-sev-bar="1"></i><i class="sev-2" data-sev-bar="2"></i><i class="sev-3" data-sev-bar="3"></i></div>
+        <div class="sev__legend mono">
+          <span class="sev-1">Low <b data-sev="1">0</b></span><span class="sev-2">Elevated <b data-sev="2">0</b></span><span class="sev-3">Critical <b data-sev="3">0</b></span>
+        </div>
+      </div>
+      <div class="origins">
+        <p class="feed__label mono">Top origins · last 5 min</p>
+        <ol class="origins__list" data-origins></ol>
+      </div>
+      <p class="feed__label mono">Live events</p>
+      <ol class="feed__list" data-feed aria-live="off"></ol>
+    </section>
+
+    <p class="drag-hint mono" aria-hidden="true">Drag to turn the globe</p>
+
+    <div class="legal mono">
+      <span>© 2026 IRIS Labs. A fictional studio.</span>
+      <nav aria-label="Legal"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Contact</a></nav>
+      <span>Palette: <span data-palette-name>—</span></span>
+    </div>
+  </footer>
+
+  <div class="track" aria-hidden="true"></div>
+
+  <dialog class="sheet glass" id="access" aria-labelledby="access-title">
+    <form method="dialog" class="sheet__form" data-form data-success="Request received. IRIS will be in touch." novalidate>
+      <header class="sheet__head">
+        <h2 id="access-title">Request access</h2>
+        <button class="icon-btn glass" type="button" data-close aria-label="Close">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7l10 10M17 7 7 17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </button>
+      </header>
+      <p class="sheet__lede">Tell us who you are and what you're trying to see. A person reads every request.</p>
+      <label>Name<input class="field" name="name" autocomplete="name" required></label>
+      <label>Work email<input class="field" name="email" type="email" autocomplete="email" required></label>
+      <label>Team
+        <select class="field" name="team">
+          <option>Threat intelligence</option>
+          <option>Security operations</option>
+          <option>Investigations / journalism</option>
+          <option>Something else</option>
+        </select>
+      </label>
+      <label>What should IRIS look for?<textarea class="field" name="note" rows="3"></textarea></label>
+      <button class="btn glass btn--accent btn--block" type="submit">Send request</button>
+    </form>
+  </dialog>
+
+  <div class="toast glass" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
