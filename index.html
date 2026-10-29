@@ -12,10 +12,14 @@
   <meta property="og:image" content="media/cyber-awareness.webp">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23f3f1ec'/%3E%3Cpath d='M16 6v10M16 16l8.7 5M16 16l-8.7 5' stroke='%23070708' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
   <link rel="preload" href="fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="styles.css?v=202610291544">
+  <link rel="stylesheet" href="styles.css?v=202610291547">
   <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-github" viewBox="0 0 16 16"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></symbol>
+    <symbol id="i-star" viewBox="0 0 16 16"><path fill="currentColor" d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.751.751 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"/></symbol>
+  </svg>
   <a class="skip" href="#templates">Skip to templates</a>
 
   <header class="nav">
@@ -26,9 +30,16 @@
     <nav class="nav__links" aria-label="Sections">
       <a href="#templates">Templates</a>
       <a href="#principles">Principles</a>
+      <a href="#darkroom">Darkroom</a>
       <a href="#about">About</a>
     </nav>
-    <a class="pill pill--light pill--sm" href="https://dev.northshutter.eu" target="_blank" rel="noopener">Portfolio <span aria-hidden="true">↗</span></a>
+    <div class="nav__actions">
+      <a class="gh" href="https://github.com/alexandruiftimi-ns/darkroom" target="_blank" rel="noopener">
+        <span class="gh__repo"><svg class="gh__icon" viewBox="0 0 16 16" aria-hidden="true"><use href="#i-github"/></svg><span class="gh__name">Darkroom</span><span class="sr"> on GitHub</span></span>
+        <span class="gh__stars" data-stars hidden><svg class="gh__icon" viewBox="0 0 16 16" aria-hidden="true"><use href="#i-star"/></svg><span data-stars-count></span><span class="sr"> stars</span></span>
+      </a>
+      <a class="pill pill--light pill--sm" href="https://dev.northshutter.eu" target="_blank" rel="noopener">Portfolio <span aria-hidden="true">↗</span></a>
+    </div>
   </header>
 
   <main id="top">
@@ -45,7 +56,7 @@
           <span class="line"><span data-word>Websites</span> <span data-word>shot</span></span>
           <span class="line"><span data-word>like</span> <span data-word>a</span> <span data-word class="grad">film.</span></span>
         </h1>
-        <p class="hero__lede" data-rise>Cinematic, scroll-driven templates by North Shutter. Every one is live: open the demo, scroll it, judge it yourself.</p>
+        <p class="hero__lede" data-rise>Cinematic, scroll-driven templates by North Shutter, all built with <a class="inline-link" href="https://github.com/alexandruiftimi-ns/darkroom" target="_blank" rel="noopener">Darkroom</a>. Every one is live: open the demo, scroll it, judge it yourself.</p>
         <div class="hero__ctas" data-rise>
           <a class="pill pill--light" href="#templates">See the templates <span aria-hidden="true">↓</span></a>
           <a class="pill pill--ghost" href="https://dev.northshutter.eu" target="_blank" rel="noopener">Visit the portfolio <span aria-hidden="true">↗</span></a>
@@ -176,6 +187,16 @@
       </ol>
     </section>
 
+    <section class="built" id="darkroom" aria-labelledby="built-title" data-reveal>
+      <p class="kicker">How these were made</p>
+      <h2 id="built-title" class="built__title">Every template here was built with <span class="grad">Darkroom</span>.</h2>
+      <p class="built__text">Darkroom is a free, open-source Claude Code skill. Describe the site you want; it designs it, builds it, checks it in a real browser and fixes what it sees.</p>
+      <a class="gh gh--lg" href="https://github.com/alexandruiftimi-ns/darkroom" target="_blank" rel="noopener">
+        <span class="gh__repo"><svg class="gh__icon" viewBox="0 0 16 16" aria-hidden="true"><use href="#i-github"/></svg><span class="gh__name">View Darkroom on GitHub</span></span>
+        <span class="gh__stars" data-stars hidden><svg class="gh__icon" viewBox="0 0 16 16" aria-hidden="true"><use href="#i-star"/></svg><span data-stars-count></span><span class="sr"> stars</span></span>
+      </a>
+    </section>
+
     <section class="about" id="about" aria-labelledby="about-title" data-reveal>
       <p class="kicker">Designed and built by</p>
       <h2 id="about-title" class="about__name">Iftimi Alexandru Paul</h2>
@@ -192,6 +213,6 @@
     </div>
   </footer>
 
-  <script src="main.js?v=202610291544" defer></script>
+  <script src="main.js?v=202610291547" defer></script>
 </body>
 </html>

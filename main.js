@@ -40,6 +40,19 @@
     document.querySelectorAll('video[data-src]').forEach((v) => videos.observe(v));
   }
 
+  // Darkroom star count from the GitHub API; the buttons work without it
+  const stars = document.querySelectorAll('[data-stars]');
+  fetch('https://api.github.com/repos/alexandruiftimi-ns/darkroom')
+    .then((r) => (r.ok ? r.json() : Promise.reject()))
+    .then(({ stargazers_count: n }) => {
+      const label = n >= 1000 ? `${(n / 1000).toFixed(1).replace(/\.0$/, '')}k` : String(n);
+      stars.forEach((s) => {
+        s.querySelector('[data-stars-count]').textContent = label;
+        s.hidden = false;
+      });
+    })
+    .catch(() => {});
+
   // Filters
   const chips = document.querySelectorAll('.chip');
   const cards = document.querySelectorAll('.card');

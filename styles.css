@@ -83,6 +83,28 @@ img, video { display: block; max-width: 100%; }
 .tag__dot { width: 6px; height: 6px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 10px var(--cyan); }
 .tag__dot--amber { background: var(--amber); box-shadow: 0 0 10px var(--amber); }
 
+/* GitHub repo button: name | star count, like GitHub's own */
+.gh {
+  display: inline-flex; align-items: stretch; height: 38px; border-radius: 999px; overflow: hidden;
+  border: 1px solid var(--line-2); background: rgba(7, 7, 8, 0.35); backdrop-filter: blur(8px);
+  font-weight: 500; font-size: 14px; white-space: nowrap;
+  transition: transform 0.4s var(--ease), border-color 0.3s;
+}
+.gh:hover { border-color: rgba(243, 241, 236, 0.4); }
+.gh:active { transform: scale(0.97); }
+.gh__repo, .gh__stars { display: inline-flex; align-items: center; gap: 8px; padding: 0 14px; }
+.gh__stars[hidden] { display: none; }
+.gh__stars { border-left: 1px solid var(--line-2); font: 500 13px/1 var(--mono); color: #cfccc5; }
+.gh__stars .gh__icon { color: #e9c46a; }
+.gh__icon { width: 16px; height: 16px; flex: none; }
+.gh--lg { height: 48px; font-size: 15px; }
+.gh--lg .gh__repo, .gh--lg .gh__stars { padding: 0 20px; }
+.gh--lg .gh__icon { width: 18px; height: 18px; }
+.nav__actions { display: flex; align-items: center; gap: 10px; }
+.inline-link { color: var(--ink); text-decoration: underline; text-decoration-color: var(--line-2); text-underline-offset: 3px; transition: text-decoration-color 0.2s; }
+.inline-link:hover { text-decoration-color: var(--ink); }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
 .kicker {
   font: 500 12px/1 var(--mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted);
 }
@@ -208,6 +230,15 @@ img, video { display: block; max-width: 100%; }
 .principles__list h3 { margin: 20px 0 10px; font-size: 20px; font-weight: 600; letter-spacing: -0.02em; }
 .principles__list p { color: var(--muted); font-size: 15px; max-width: 26em; }
 
+/* ---------- built with darkroom ---------- */
+.built {
+  max-width: 1560px; margin: 0 auto; padding: 120px var(--gutter);
+  display: grid; justify-items: center; text-align: center; gap: 22px;
+  border-top: 1px solid var(--line);
+}
+.built__title { max-width: 16em; font-size: clamp(32px, 4.4vw, 60px); font-weight: 600; letter-spacing: -0.04em; line-height: 1.04; text-wrap: balance; }
+.built__text { max-width: 32em; color: var(--muted); font-size: 17px; margin-bottom: 12px; text-wrap: pretty; }
+
 /* ---------- about ---------- */
 .about {
   max-width: 1560px; margin: 0 auto; padding: 120px var(--gutter) 140px;
@@ -268,5 +299,11 @@ img, video { display: block; max-width: 100%; }
   .card__meta { grid-template-columns: auto 1fr; }
   .card__type { grid-column: 2; padding-top: 0; }
   .card__cta { opacity: 1; transform: none; height: 34px; font-size: 13px; right: 12px; bottom: 12px; }
-  .principles, .about { padding-top: 88px; padding-bottom: 96px; }
+  .principles, .built, .about { padding-top: 88px; padding-bottom: 96px; }
+  .nav .gh__name { display: none; }
+  .nav .gh__repo { padding: 0 10px 0 12px; }
+  .nav .gh__stars { padding: 0 12px 0 10px; }
+}
+@media (max-width: 430px) {
+  .brand__word { display: none; }
 }
