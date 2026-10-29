@@ -18,6 +18,7 @@
   const T = 1300;
   const N = 122;              // frames 000-121; after the last one, only the photograph is shown
   const FPS = 24;
+  const ZOOM = 1.07;          // the film ends scaled up: a slow push-in on the bird, held on the photograph
   const BIRD = [0.56, 0.45];  // bird's body in the final frame and the photograph (u, v of the 16:9 image)
 
   // Where the bird is (x, 0–1) per frame: the virtual camera pans to keep it in view when the 16:9 frame is wider than the screen.
@@ -46,7 +47,7 @@
   const edges = new Array(N).fill(null); // [top rgb, bottom rgb] sampled per frame, for the band fill
   const decoding = new Set();
   let photo = null, photoEdges = null;
-  const state = { f: 0, photo: 0 };
+  const state = { f: 0, photo: 0, z: 1 };
   let dirty = true, W = 0, H = 0, dpr = 1;
 
   const probe = document.createElement('canvas'); probe.width = 16; probe.height = 9;
@@ -85,28 +86,29 @@
     return -1;
   }
 
-  // Load: frame 0 first, then coarse-to-fine so a fast scroller always lands near a real frame, then the photograph.
+  // Load in playback order: the film plays by itself at 24 fps, so each frame must arrive before the clock reaches it.
   (async () => {
     await fetchFrame(0);
-    const order = [], seen = new Set([0]);
-    for (let step = 32; step >= 1; step /= 2) for (let i = 0; i < N; i += step) if (!seen.has(i)) { seen.add(i); order.push(i); }
-    if (!seen.has(N - 1)) order.push(N - 1);
-    let k = 0;
-    const worker = async () => { while (k < order.length) await fetchFrame(order[k++]); };
+    let k = 1;
+    const worker = async () => { while (k < N) await fetchFrame(k++); };
     await Promise.all([worker(), worker(), worker(), worker()]);
   })();
   fetch(PHOTO).then((r) => r.blob()).then(createImageBitmap).then((b) => { photo = b; photoEdges = sampleEdges(b); dirty = true; }).catch(() => {});
 
   // Layout of the 16:9 image on the stage for a given focus.
-  function geom(focus) {
+  function geom(focus, z = state.z) {
     let w, h, y;
     if (band()) { w = W * 1.5; h = w * 9 / 16; if (h > H * .62) { h = H * .62; w = h * 16 / 9; } y = H * .47 - h / 2; }
     else { const s = Math.max(W / 1920, H / 1080); w = 1920 * s; h = 1080 * s; y = (H - h) / 2; }
-    const x = w > W ? clamp(W / 2 - focus * w, W - w, 0) : (W - w) / 2;
+    let x = w > W ? clamp(W / 2 - focus * w, W - w, 0) : (W - w) / 2;
+    if (z !== 1) { // push-in about the bird
+      const bx = x + BIRD[0] * w, by = y + BIRD[1] * h;
+      w *= z; h *= z; x = bx - BIRD[0] * w; y = by - BIRD[1] * h;
+    }
     return { x, y, w, h };
   }
   // CSS px position of the bird at rest (used for the camera push-in and the editorial reframes).
-  function birdPoint() { const g = geom(focusAt(N - 1)); return { x: g.x + BIRD[0] * g.w, y: g.y + BIRD[1] * g.h, g }; }
+  function birdPoint() { const g = geom(focusAt(N - 1), ZOOM); return { x: g.x + BIRD[0] * g.w, y: g.y + BIRD[1] * g.h, g }; }
 
   function resize() {
     dpr = Math.min(devicePixelRatio || 1, 2);
@@ -132,7 +134,7 @@
     ctx.setTransform(k, 0, 0, k, 0, 0);
 
     // Hard cuts only: one image on the canvas at a time, never two blended (no ghosting).
-    const showPhoto = photo && (state.photo >= .5 || state.f >= N - 1);
+    const showPhoto = photo && state.photo >= .5;
     if (band()) {
       const e = (showPhoto ? photoEdges : edges[a]) || photoEdges;
       if (e) { ctx.fillStyle = rgb(e[0]); ctx.fillRect(0, 0, W, g.y + 2); ctx.fillStyle = rgb(e[1]); ctx.fillRect(0, g.y + g.h - 2, W, H); }
@@ -189,15 +191,10 @@
   // 01 The Silence: the mist parts.
   tl.to('.ch1-block', { y: () => -innerHeight * .08, opacity: 0, duration: 90, ease: 'power1.in' }, 0);
   tl.to('.cue', { opacity: 0, duration: 25 }, 0);
-  tl.to('.veil', { opacity: 0, duration: 110, ease: 'power1.inOut' }, 25);
   tl.fromTo('.lens', { scale: 1.05 }, { scale: 1, duration: 140, ease: 'power1.out' }, 0);
   tl.to('.mark', { opacity: 1, duration: 30 }, 95);
 
-  // Footage: 0→36 arrival, 36→70 dance, 70→100 landing (decelerating), 100→121 a quick run-out, then the photograph.
-  tl.fromTo(state, { f: 0 }, { f: 36, duration: 220 }, 110);
-  tl.to(state, { f: 70, duration: 320 }, 330);
-  tl.to(state, { f: 100, duration: 160, ease: 'power2.out' }, 650);
-  tl.to(state, { f: N - 1, duration: 30 }, 810);
+  // The footage is not on this timeline: it autoplays at 24 fps (see Autoplay). Scroll drives the text and the camera.
 
   // 02 The Arrival
   io('.ch2 .line', 205, 35, { y: 18 }, { y: 0 });
@@ -229,8 +226,6 @@
   // 04 The Stillness
   io('.ch4-lede', 722, 34, { y: 16 }, { y: 0 });
   out('.ch4-lede', 828, 26, { y: -10 });
-  tl.set(state, { photo: 1 }, 840);                                                      // last frame reached → cut to the photograph
-  tl.to('.lens', { scale: 1.07, duration: 200, ease: 'power1.inOut' }, 850);              // the slow push-in
   tl.fromTo('.headline .wd', { opacity: 0, yPercent: 18, filter: 'blur(14px)' },          // words come into focus
     { opacity: 1, yPercent: 0, filter: 'blur(0px)', duration: 44, stagger: 16, ease: 'power1.out' }, 880);
   // 1000–1060: held. The deliberate pause.
@@ -256,6 +251,30 @@
   });
   ScrollTrigger.addEventListener('refreshInit', resize);
   gsap.ticker.add(render);
+
+  /* ---------------- Autoplay: 24 fps, then hold on the photograph, scaled up ---------------- */
+
+  const ZOOM_AT = 100 / FPS, ZOOM_FOR = 1.9; // push-in starts as the bird lands and settles ~1 s after the cut
+  let clock = -0.4;                          // a short beat before frame 0
+  const ready = (i) => !!blobs[Math.min(N - 1, i)];
+  const ease = (u) => (u < .5 ? 2 * u * u : 1 - 2 * (1 - u) * (1 - u));
+  function play(_, ms) {
+    if (state.photo && state.z === ZOOM) return;
+    // Buffering: never run ahead of the frames that have arrived.
+    if (state.photo || ready(Math.max(0, Math.floor(clock * FPS)) + 4)) clock += Math.min(ms, 100) / 1000;
+    state.f = clamp(clock * FPS, 0, N - 1);
+    const u = clamp((clock - ZOOM_AT) / ZOOM_FOR, 0, 1);
+    state.z = u >= 1 ? ZOOM : 1 + (ZOOM - 1) * ease(u);
+    if (state.f >= N - 1 && photo) state.photo = 1;  // last frame reached → cut to the photograph
+    dirty = true;
+  }
+  function start() {
+    clock = -0.4; state.f = 0; state.photo = 0; state.z = 1;
+    gsap.fromTo('.veil', { opacity: 1 }, { opacity: 0, duration: 1.8, delay: .3, ease: 'power1.inOut', overwrite: true });
+    dirty = true;
+  }
+  gsap.ticker.add(play);
+  start();
 
   /* ---------------- HUD: chapters + timecode ---------------- */
 
@@ -292,6 +311,7 @@
       onUpdate: () => scrollTo(0, p.y),
       onComplete: () => {
         rewind = null;
+        start();
         ch1.classList.remove('is-in'); void ch1.offsetWidth; ch1.classList.add('is-in');
         $('.mark').focus({ preventScroll: true });
       },

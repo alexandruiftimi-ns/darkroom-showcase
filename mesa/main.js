@@ -250,6 +250,71 @@
   }
 
   /* ============================================================
+     GSAP layer: anchor glide, split headings, painting unveil
+     (native wheel/touch scrolling is never taken over)
+     ============================================================ */
+  const bar = document.querySelector('.bar');
+  const setBar = () => {
+    const r = hero.getBoundingClientRect();
+    bar.classList.toggle('is-on', r.bottom < 80);
+    // the gold cursor belongs to the hero only, even when the page moves under a still mouse
+    if (!touchMode && (py < r.top || py > r.bottom || py < 80 && r.bottom < 80)) {
+      cursorEl.classList.remove('is-on');
+      document.body.classList.remove('hero-cursor');
+    }
+  };
+  addEventListener('scroll', setBar, { passive: true });
+  setBar();
+
+  const gsap = window.gsap;
+  const SPLIT = '.intro__lede, .room__name, .interlude__quote, .atelier__quote:not(.atelier__quote--small) p, .discovery__title';
+
+  if (gsap) {
+    gsap.registerPlugin(window.ScrollTrigger, window.ScrollToPlugin, window.SplitText);
+
+    // click a nav link -> eased glide to the section, offset under the sticky bar
+    document.addEventListener('click', e => {
+      const a = e.target.closest('a[href^="#"]');
+      if (!a || a.getAttribute('href').length < 2) return;
+      const target = document.querySelector(a.getAttribute('href'));
+      if (!target) return;
+      e.preventDefault();
+      const offset = target === hero ? 0 : bar.offsetHeight - 1;
+      const dist = Math.abs(target.getBoundingClientRect().top - offset);
+      gsap.to(window, {
+        duration: staticMode ? 0 : clamp(0.9 + dist / 5000, 0.9, 2.2),
+        scrollTo: { y: target, offsetY: offset, autoKill: true },
+        ease: 'power3.inOut',
+      });
+      history.replaceState(null, '', a.getAttribute('href'));
+    });
+
+    if (!staticMode) {
+      // line-mask reveal: each line slides up from behind its own edge, one after another
+      const heads = [...document.querySelectorAll(SPLIT)];
+      heads.forEach(el => { el.classList.remove('reveal'); gsap.set(el, { autoAlpha: 0 }); });
+      document.fonts.ready.then(() => {
+        heads.forEach(el => {
+          const split = window.SplitText.create(el, { type: 'lines', mask: 'lines', linesClass: 'split-line' });
+          gsap.set(el, { autoAlpha: 1 });
+          gsap.from(split.lines, {
+            yPercent: 105, duration: 0.95, ease: 'power4.out', stagger: 0.09,
+            scrollTrigger: { trigger: el, start: 'top 88%', once: true },
+          });
+        });
+        // paintings: a slow curtain lift inside the gilt frame
+        gsap.utils.toArray('.frame img').forEach(img => {
+          gsap.fromTo(img,
+            { clipPath: 'inset(0 0 100% 0)', scale: 1.08 },
+            { clipPath: 'inset(0 0 0% 0)', scale: 1, duration: 1.8, ease: 'power3.inOut',
+              scrollTrigger: { trigger: img, start: 'top 82%', once: true } });
+        });
+        window.ScrollTrigger.refresh();
+      });
+    }
+  }
+
+  /* ============================================================
      Scroll reveals
      ============================================================ */
   const io = new IntersectionObserver(entries => {
@@ -282,7 +347,7 @@
         const r = el.getBoundingClientRect();
         if (r.bottom < -200 || r.top > h + 200) continue;
         const off = (r.top + r.height / 2 - h / 2) * parseFloat(el.dataset.parallax);
-        el.style.transform = `translate3d(0, ${off.toFixed(1)}px, 0)`;
+        el.style.transform = `translate3d(0, ${off.toFixed(1)}px, 0) scale(${el.dataset.scale || 1})`;
       }
       const tr = toucher.getBoundingClientRect();
       if (tr.bottom > 0 && tr.top < h) {

@@ -3,18 +3,32 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Maison Solène — Paris</title>
-  <meta name="description" content="Maison Solène, haute parfumerie, Paris. Lumière, Ombre and Le Toucher. Two souls. One touch.">
+  <title>Maison Solène — Haute Parfumerie, Paris</title>
+  <meta name="description" content="Maison Solène, haute parfumerie, Paris. Three compositions written after three paintings. Two souls. One touch.">
   <meta name="theme-color" content="#0b0a09">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230b0a09'/%3E%3Ccircle cx='16' cy='16' r='5' fill='%23e6cf9a'/%3E%3C/svg%3E">
   <link rel="preload" as="image" href="frames/desktop/f001.webp" media="(min-aspect-ratio: 1/1), (min-width: 901px)">
   <link rel="preload" as="image" href="frames/mobile/f001.webp" media="(max-aspect-ratio: 1/1) and (max-width: 900px)">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+  <!-- sticky bar, shown once the hero has passed -->
+  <header class="bar" aria-label="Maison Solène">
+    <nav class="bar__left" aria-label="Sections">
+      <a href="#parfums">Parfums</a>
+      <a href="#galerie">La Galerie</a>
+      <a href="#atelier">L’Atelier</a>
+    </nav>
+    <a class="bar__mark" href="#hero">Maison Solène</a>
+    <div class="bar__right">
+      <a href="#decouverte">Rendez-vous</a>
+      <a href="#decouverte" class="bar__bag">Bag <span>(0)</span></a>
+    </div>
+  </header>
 
   <!-- HERO: cursor-driven frame sequence (scroll-driven on touch devices) -->
   <section class="hero" id="hero" aria-label="Maison Solène">
@@ -45,61 +59,127 @@
   <div class="cursor" aria-hidden="true"></div>
 
   <main>
-    <!-- 1. THE TWO SCENTS -->
-    <section class="scents" id="parfums" aria-label="Les Parfums">
-      <article class="scent scent--lumiere">
-        <p class="eyebrow reveal">N° 1 · Eau de Parfum</p>
-        <div class="scent__bottle" data-parallax="-0.10">
-          <div class="float">
-            <img src="assets/bottles/lumiere.svg" alt="Lumière, ivory glass with a gold cap" width="200" height="380">
+    <!-- INTRO -->
+    <section class="intro" aria-label="The house">
+      <p class="eyebrow reveal">Haute Parfumerie · Paris · Since 1924</p>
+      <p class="intro__lede reveal" style="--d:.1s">Three compositions, each written after a painting.<br><em>Light, shadow, and the moment they meet.</em></p>
+      <span class="intro__rule reveal" style="--d:.2s" aria-hidden="true"></span>
+    </section>
+
+    <!-- 1. THE GALLERY ROOMS: one painting, one perfume -->
+    <section id="parfums" aria-label="Les Parfums">
+      <article class="room room--lumiere">
+        <div class="room__art">
+          <figure class="frame reveal">
+            <img src="assets/art/turner-norham.webp" alt="J. M. W. Turner, Norham Castle, Sunrise: a pale gold sun dissolving over a blue castle and river" width="1600" height="1180" loading="lazy">
+          </figure>
+          <div class="room__bottle" data-parallax="-0.08">
+            <div class="float">
+              <img src="assets/bottles/lumiere.webp" alt="Lumière, frosted ivory glass with a gold cap" width="715" height="1020" loading="lazy">
+            </div>
+            <span class="bottle-shadow"></span>
           </div>
-          <span class="scent__shadow"></span>
         </div>
-        <h2 class="scent__name reveal">Lumière</h2>
-        <p class="scent__desc reveal" style="--d:.12s">Morning light across a linen sheet. Lumière opens bright, almost weightless, then settles into the warmth of skin like sun that has nowhere left to go.</p>
-        <dl class="notes reveal" style="--d:.24s">
-          <div><dt>Top</dt><dd>Bergamot, neroli, pink pepper</dd></div>
-          <div><dt>Heart</dt><dd>Jasmine sambac, orris, white peony</dd></div>
-          <div><dt>Base</dt><dd>White musk, ambrette, cashmere wood</dd></div>
-        </dl>
+
+        <div class="room__text">
+          <p class="eyebrow reveal">Salle I · N° 1 · Eau de Parfum</p>
+          <h2 class="room__name reveal">Lumière</h2>
+          <p class="room__after reveal">after Turner</p>
+          <div class="label reveal">
+            <p><strong>J. M. W. Turner</strong> (1775–1851)</p>
+            <p><em>Norham Castle, Sunrise</em>, c. 1845</p>
+            <p>Oil on canvas · Tate, London</p>
+          </div>
+          <p class="room__desc reveal">Turner painted the sun until only its warmth was left. Lumière does the same with jasmine: bergamot and neroli dissolve into a haze of orris and white musk, bright at first, then simply warm on the skin.</p>
+          <dl class="notes reveal">
+            <div><dt>Top</dt><dd>Bergamot, neroli, pink pepper</dd></div>
+            <div><dt>Heart</dt><dd>Jasmine sambac, orris, white peony</dd></div>
+            <div><dt>Base</dt><dd>White musk, ambrette, cashmere wood</dd></div>
+          </dl>
+          <div class="buy reveal">
+            <p class="buy__price"><span>100 ml</span>€350</p>
+            <p class="buy__price"><span>50 ml</span>€240</p>
+            <a class="link" href="#decouverte">Reserve Lumière</a>
+          </div>
+        </div>
       </article>
 
-      <article class="scent scent--ombre">
-        <p class="eyebrow reveal">N° 2 · Eau de Parfum</p>
-        <div class="scent__bottle" data-parallax="-0.16">
-          <div class="float float--late">
-            <img src="assets/bottles/ombre.svg" alt="Ombre, smoked charcoal glass with a gold collar" width="200" height="380">
+      <article class="room room--ombre">
+        <div class="room__art">
+          <figure class="frame frame--tall reveal">
+            <img src="assets/art/whistler-nocturne.webp" alt="James McNeill Whistler, Nocturne in Black and Gold: falling sparks of gold fireworks over a black night" width="1200" height="1594" loading="lazy">
+          </figure>
+          <div class="room__bottle" data-parallax="-0.12">
+            <div class="float float--late">
+              <img src="assets/bottles/ombre.webp" alt="Ombre, a matte black flacon" width="865" height="1280" loading="lazy">
+            </div>
+            <span class="bottle-shadow"></span>
           </div>
-          <span class="scent__shadow"></span>
         </div>
-        <h2 class="scent__name reveal">Ombre</h2>
-        <p class="scent__desc reveal" style="--d:.12s">The hour after the candles go out. Ombre is smoke and polished wood, close and unhurried, a scent that keeps its own counsel.</p>
-        <dl class="notes reveal" style="--d:.24s">
-          <div><dt>Top</dt><dd>Black pepper, cardamom, saffron</dd></div>
-          <div><dt>Heart</dt><dd>Smoked birch, leather, iris</dd></div>
-          <div><dt>Base</dt><dd>Oud, vetiver, labdanum</dd></div>
-        </dl>
+
+        <div class="room__text">
+          <p class="eyebrow reveal">Salle II · N° 2 · Eau de Parfum</p>
+          <h2 class="room__name reveal">Ombre</h2>
+          <p class="room__after reveal">after Whistler</p>
+          <div class="label reveal">
+            <p><strong>James McNeill Whistler</strong> (1834–1903)</p>
+            <p><em>Nocturne in Black and Gold – The Falling Rocket</em>, 1875</p>
+            <p>Oil on panel · Detroit Institute of Arts</p>
+          </div>
+          <p class="room__desc reveal">A black night, a few sparks of gold falling slowly through it. Ombre is smoke and polished wood, close and unhurried: birch tar and leather over a deep base of oud, with saffron glinting through like the last of the fireworks.</p>
+          <dl class="notes reveal">
+            <div><dt>Top</dt><dd>Black pepper, cardamom, saffron</dd></div>
+            <div><dt>Heart</dt><dd>Smoked birch, leather, iris</dd></div>
+            <div><dt>Base</dt><dd>Oud, vetiver, labdanum</dd></div>
+          </dl>
+          <div class="buy reveal">
+            <p class="buy__price"><span>100 ml</span>€350</p>
+            <p class="buy__price"><span>50 ml</span>€240</p>
+            <a class="link" href="#decouverte">Reserve Ombre</a>
+          </div>
+        </div>
       </article>
     </section>
 
-    <!-- 2. LE TOUCHER: the two bottles meet -->
+    <!-- 2. INTERLUDE: the painting the hero quotes -->
+    <section class="interlude" id="galerie" aria-label="La Galerie">
+      <figure class="interlude__art">
+        <img src="assets/art/michelangelo-adam.webp" alt="Michelangelo, The Creation of Adam: two hands reaching toward each other, almost touching" width="2400" height="1089" loading="lazy" data-parallax="-0.06" data-scale="1.12">
+      </figure>
+      <div class="interlude__text">
+        <p class="eyebrow reveal">Salle III · The origin</p>
+        <p class="interlude__quote reveal" style="--d:.1s">Every house has its origin.<br>Ours is the space <em>between two fingertips</em>.</p>
+        <p class="interlude__label reveal" style="--d:.2s">Michelangelo Buonarroti, <em>The Creation of Adam</em>, c. 1512 · Fresco · Sistine Chapel, Vatican</p>
+      </div>
+    </section>
+
+    <!-- 3. LE TOUCHER: the two bottles meet (the night chapter) -->
     <section class="toucher" id="toucher" aria-label="Le Toucher">
       <div class="toucher__stage">
         <p class="toucher__intro eyebrow">Lumière <span>+</span> Ombre</p>
         <div class="toucher__burst" aria-hidden="true"></div>
-        <img class="tb tb--lumiere" src="assets/bottles/lumiere.svg" alt="" aria-hidden="true">
-        <img class="tb tb--ombre" src="assets/bottles/ombre.svg" alt="" aria-hidden="true">
-        <img class="tb tb--toucher" src="assets/bottles/toucher.svg" alt="Le Toucher, black glass with gold cap and gold edge">
+        <img class="tb tb--lumiere" src="assets/bottles/lumiere.webp" alt="" aria-hidden="true" width="715" height="1020">
+        <img class="tb tb--ombre" src="assets/bottles/ombre.webp" alt="" aria-hidden="true" width="865" height="1280">
+        <img class="tb tb--toucher" src="assets/bottles/toucher.webp" alt="Le Toucher, clear crystal flacon with a gold cap and a red label" width="735" height="1217">
         <div class="toucher__text">
           <p class="eyebrow">N° 3 · Extrait de Parfum</p>
           <h2>Le Toucher</h2>
           <p>Lumière’s jasmine laid over Ombre’s smoked woods, joined by a single drop of golden benzoin. Neither light nor shadow. The moment between.</p>
           <p class="toucher__notes">Neroli · Saffron — Jasmine · Iris — Oud · Benzoin · Musk</p>
+          <p class="toucher__price">70 ml Extrait · €420</p>
         </div>
       </div>
     </section>
 
-    <!-- 3. THE ATELIER -->
+    <!-- 4. HOUSE SERVICES -->
+    <section class="services" aria-label="House services">
+      <div class="reveal"><p class="services__t">Engraved by hand</p><p>Initials or a date, cut into the glass in our atelier.</p></div>
+      <div class="reveal" style="--d:.08s"><p class="services__t">Wrapped in linen</p><p>Every flacon leaves Paris in a linen-bound case.</p></div>
+      <div class="reveal" style="--d:.16s"><p class="services__t">Refilled for life</p><p>Bring your flacon back to the Rue de Valois, always.</p></div>
+      <div class="reveal" style="--d:.24s"><p class="services__t">Delivered from Paris</p><p>Complimentary, with two samples of your choice.</p></div>
+    </section>
+
+    <!-- 5. THE ATELIER -->
     <section class="atelier" id="atelier" aria-label="L’Atelier">
       <p class="eyebrow reveal">L’Atelier · Rue de Valois, Paris</p>
       <blockquote class="atelier__quote reveal">
@@ -126,8 +206,9 @@
       </ol>
     </section>
 
-    <!-- 4. DISCOVERY -->
+    <!-- 6. DISCOVERY -->
     <section class="discovery" id="decouverte" aria-label="Discover the house">
+      <p class="eyebrow reveal">Rendez-vous</p>
       <h2 class="discovery__title reveal">Come and meet them.</h2>
 
       <div class="discovery__grid">
@@ -149,11 +230,11 @@
           <h3>The discovery set</h3>
           <p>Lumière, Ombre and Le Toucher in three 10 ml flacons, in a linen-bound case. The price is returned to you against your first full bottle.</p>
           <div class="set">
-            <img src="assets/bottles/lumiere.svg" alt="" width="200" height="380">
-            <img src="assets/bottles/toucher.svg" alt="" width="200" height="380">
-            <img src="assets/bottles/ombre.svg" alt="" width="200" height="380">
+            <img src="assets/bottles/lumiere.webp" alt="" width="715" height="1020" loading="lazy">
+            <img src="assets/bottles/toucher.webp" alt="" width="735" height="1217" loading="lazy">
+            <img src="assets/bottles/ombre.webp" alt="" width="865" height="1280" loading="lazy">
           </div>
-          <p class="price">€95</p>
+          <p class="price">3 × 10 ml · €145</p>
           <button class="btn" type="button" id="order-set">Order the discovery set</button>
           <p class="form__note" id="order-note" role="status" aria-live="polite"></p>
         </div>
@@ -161,17 +242,22 @@
     </section>
   </main>
 
-  <!-- 5. FOOTER -->
+  <!-- 7. FOOTER -->
   <footer class="footer">
     <p class="footer__mark">Maison Solène</p>
+    <p class="footer__line">Haute Parfumerie · Paris</p>
     <div class="footer__row">
       <p>12 Rue de Valois<br>75001 Paris</p>
       <p><a href="mailto:salon@maisonsolene.example">salon@maisonsolene.example</a><br>Tuesday to Saturday, 11h–19h</p>
       <p><a href="#">Instagram</a><br><a href="#">Mentions légales</a></p>
     </div>
-    <p class="footer__small">© 2026 Maison Solène · A fictional house</p>
+    <p class="footer__small">© 2026 Maison Solène · A fictional house · Artworks in the public domain</p>
   </footer>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollToPlugin.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js"></script>
   <script src="main.js"></script>
 </body>
 </html>
