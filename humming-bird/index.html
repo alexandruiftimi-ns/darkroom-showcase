@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Between Wingbeats</title>
+<meta name="description" content="An interactive nature study of a hummingbird's flight, directed by your scroll.">
+<meta name="theme-color" content="#D9E3EB">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23D9E3EB'/%3E%3Cpath d='M16 16c4-6 12-6 12 0s-8 6-12 0-12-6-12 0 8 6 12 0' fill='none' stroke='%231255CF' stroke-width='2'/%3E%3C/svg%3E">
+<script>
+  (function () {
+    var d = document.documentElement, c = navigator.connection;
+    d.classList.add('js');
+    var calm = matchMedia('(prefers-reduced-motion: reduce)').matches || (c && c.saveData);
+    if (!calm) d.classList.add('film');
+  })();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400..600&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@400;500&display=swap">
+<link rel="stylesheet" href="styles.css">
+<link rel="preload" as="image" href="media/f1920/000.webp" media="(min-width: 1024px)">
+</head>
+<body>
+
+<a class="skip" href="#credits">Skip to the end</a>
+
+<header class="hud hud-top">
+  <a class="mark" href="#top">Between Wingbeats</a>
+  <p class="hud-tag">An interactive nature study</p>
+</header>
+
+<main id="film" class="film">
+  <div class="stage">
+
+    <div class="plate" aria-hidden="true">
+      <div class="lens">
+        <canvas class="screen"></canvas>
+      </div>
+      <div class="veil"><span class="mist mist-a"></span><span class="mist mist-b"></span></div>
+    </div>
+
+    <!-- 01 -->
+    <section class="ch ch1" id="top" aria-labelledby="t-title">
+      <div class="ch1-block">
+        <p class="eyebrow"><span class="num">01</span> The Silence</p>
+        <p class="prelude"><span class="ln"><span>In a world that never stops&hellip;</span></span></p>
+        <h1 id="t-title" class="title">
+          <span class="ln"><span>Between</span></span>
+          <span class="ln ln-2"><span><em>Wingbeats</em></span></span>
+        </h1>
+        <p class="sub"><span class="ln"><span>An extraordinary life, hidden in plain sight.</span></span></p>
+      </div>
+      <p class="cue" aria-hidden="true"><span>Scroll to explore</span><i></i></p>
+    </section>
+
+    <!-- 02 -->
+    <section class="ch ch2" aria-labelledby="t-arrival">
+      <figure class="still"><img src="media/still-hover.webp" width="1600" height="900" alt="A blue hummingbird hovers facing the camera, wings spread wide against a soft blue-grey sky." loading="lazy"></figure>
+      <div class="line line-bl">
+        <p class="eyebrow"><span class="num">02</span> The Arrival</p>
+        <h2 id="t-arrival" class="narr">&hellip;one creature has mastered the impossible.</h2>
+      </div>
+    </section>
+
+    <!-- 03 -->
+    <section class="ch ch3" aria-labelledby="t-dance">
+      <figure class="still"><img src="media/still-backward.webp" width="1600" height="900" alt="The hummingbird drifts backward through the air, beak still pointing forward." loading="lazy"></figure>
+      <div class="line line-br">
+        <p class="eyebrow"><span class="num">03</span> The Dance</p>
+        <h2 id="t-dance" class="narr narr-row"><span class="w w1">Forward.</span> <span class="w w2">Backward.</span> <span class="w w3">Suspended in time.</span></h2>
+      </div>
+      <ul class="notes">
+        <li class="note note-a1">
+          <svg class="glyph glyph-arrow" viewBox="0 0 120 12" aria-hidden="true"><path pathLength="1" d="M119 6H2M8 1 2 6l6 5"/></svg>
+          <span class="note-fig">Fig. 03.1 &mdash; Reverse flight</span>
+          <span class="note-text">The only birds capable of sustained backward flight.</span>
+        </li>
+        <li class="note note-a2">
+          <svg class="glyph glyph-eight" viewBox="0 0 100 44" aria-hidden="true"><path pathLength="1" d="M50 22C62 6 94 4 94 22S62 38 50 22 6 4 6 22s32 16 44 0"/></svg>
+          <span class="note-fig">Fig. 03.2 &mdash; Wing path</span>
+          <span class="note-text">Wings moving in a remarkable figure-eight pattern.</span>
+        </li>
+        <li class="note note-a3">
+          <svg class="glyph glyph-tick" viewBox="0 0 120 12" aria-hidden="true"><path pathLength="1" d="M1 6h118M1 1v10M30 3v6M60 3v6M90 3v6M119 1v10"/></svg>
+          <span class="note-fig">Fig. 03.3 &mdash; Control</span>
+          <span class="note-text">Precision hidden inside extraordinary speed.</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- 04 -->
+    <section class="ch ch4" aria-labelledby="t-still">
+      <figure class="still"><img src="media/still-photo.webp" width="1672" height="941" alt="The hummingbird at rest on a bare twig, its throat a deep iridescent cobalt." loading="lazy"></figure>
+      <div class="line line-bl ch4-lede">
+        <p class="eyebrow"><span class="num">04</span> The Stillness</p>
+        <p class="narr">Even the fastest wings find a moment of stillness.</p>
+      </div>
+      <h2 id="t-still" class="headline">
+        <span class="hl-row"><span class="wd">The</span> <span class="wd">art</span> <span class="wd">of</span></span>
+        <span class="hl-row"><em><span class="wd">standing</span> <span class="wd">still.</span></em></span>
+      </h2>
+    </section>
+
+    <!-- 05 -->
+    <section class="ch ch5" aria-labelledby="t-reveal">
+      <div class="spread">
+        <p class="eyebrow"><span class="num">05</span> The Revelation</p>
+        <h2 id="t-reveal" class="spread-title">A world between <em>wingbeats.</em></h2>
+        <p class="spread-lede">The extraordinary is everywhere. If we know where to look.</p>
+        <p class="spread-body">A creature small enough to vanish in a glance crosses the air, turns back on itself, and settles on a twig as if nothing happened. The wonder was never hidden. It was only small, and quick, and waiting for someone to slow down.</p>
+      </div>
+      <p class="plate-cap" aria-hidden="true">Fig. 05 &mdash; At rest. The same wings, folded.</p>
+
+      <footer class="credits" id="credits">
+        <p class="credit-title">Between Wingbeats</p>
+        <p class="credit-sub"><em>An Interactive Nature Study.</em></p>
+        <p class="credit-note">A five-second flight, directed by your scroll.</p>
+        <button class="replay" type="button">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 10a5.5 5.5 0 1 0 1.7-3.98M4 3.5v3.2h3.2"/></svg>
+          <span>Replay experience</span>
+        </button>
+      </footer>
+    </section>
+
+  </div>
+</main>
+
+<div class="hud hud-bottom">
+  <nav class="rail" aria-label="Chapters">
+    <button type="button" data-ch="0"><span class="num">01</span><span class="rail-name">The Silence</span></button>
+    <button type="button" data-ch="1"><span class="num">02</span><span class="rail-name">The Arrival</span></button>
+    <button type="button" data-ch="2"><span class="num">03</span><span class="rail-name">The Dance</span></button>
+    <button type="button" data-ch="3"><span class="num">04</span><span class="rail-name">The Stillness</span></button>
+    <button type="button" data-ch="4"><span class="num">05</span><span class="rail-name">The Revelation</span></button>
+  </nav>
+  <p class="tc" aria-hidden="true"><span class="tc-label">TC</span> <span class="tc-val">00:00:00</span></p>
+</div>
+
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script defer src="film.js"></script>
+</body>
+</html>

@@ -1,0 +1,616 @@
+{
+ "schema": "darkroom-frames-v1",
+ "source": "../frames/seq_####.png (client 4K masters)",
+ "fps": 15,
+ "count": 151,
+ "width": 960,
+ "height": 540,
+ "format": "webp",
+ "poster": "poster.webp",
+ "frames": [
+  {
+   "file": "seq_0001.webp",
+   "bytes": 115362
+  },
+  {
+   "file": "seq_0002.webp",
+   "bytes": 115362
+  },
+  {
+   "file": "seq_0003.webp",
+   "bytes": 106092
+  },
+  {
+   "file": "seq_0004.webp",
+   "bytes": 107582
+  },
+  {
+   "file": "seq_0005.webp",
+   "bytes": 94942
+  },
+  {
+   "file": "seq_0006.webp",
+   "bytes": 90150
+  },
+  {
+   "file": "seq_0007.webp",
+   "bytes": 78814
+  },
+  {
+   "file": "seq_0008.webp",
+   "bytes": 80354
+  },
+  {
+   "file": "seq_0009.webp",
+   "bytes": 80060
+  },
+  {
+   "file": "seq_0010.webp",
+   "bytes": 87920
+  },
+  {
+   "file": "seq_0011.webp",
+   "bytes": 99168
+  },
+  {
+   "file": "seq_0012.webp",
+   "bytes": 98094
+  },
+  {
+   "file": "seq_0013.webp",
+   "bytes": 94248
+  },
+  {
+   "file": "seq_0014.webp",
+   "bytes": 98756
+  },
+  {
+   "file": "seq_0015.webp",
+   "bytes": 105976
+  },
+  {
+   "file": "seq_0016.webp",
+   "bytes": 103278
+  },
+  {
+   "file": "seq_0017.webp",
+   "bytes": 99804
+  },
+  {
+   "file": "seq_0018.webp",
+   "bytes": 105556
+  },
+  {
+   "file": "seq_0019.webp",
+   "bytes": 109224
+  },
+  {
+   "file": "seq_0020.webp",
+   "bytes": 95390
+  },
+  {
+   "file": "seq_0021.webp",
+   "bytes": 97420
+  },
+  {
+   "file": "seq_0022.webp",
+   "bytes": 85370
+  },
+  {
+   "file": "seq_0023.webp",
+   "bytes": 83672
+  },
+  {
+   "file": "seq_0024.webp",
+   "bytes": 79214
+  },
+  {
+   "file": "seq_0025.webp",
+   "bytes": 72238
+  },
+  {
+   "file": "seq_0026.webp",
+   "bytes": 79862
+  },
+  {
+   "file": "seq_0027.webp",
+   "bytes": 78010
+  },
+  {
+   "file": "seq_0028.webp",
+   "bytes": 80212
+  },
+  {
+   "file": "seq_0029.webp",
+   "bytes": 78008
+  },
+  {
+   "file": "seq_0030.webp",
+   "bytes": 68908
+  },
+  {
+   "file": "seq_0031.webp",
+   "bytes": 74092
+  },
+  {
+   "file": "seq_0032.webp",
+   "bytes": 71888
+  },
+  {
+   "file": "seq_0033.webp",
+   "bytes": 75116
+  },
+  {
+   "file": "seq_0034.webp",
+   "bytes": 69222
+  },
+  {
+   "file": "seq_0035.webp",
+   "bytes": 61436
+  },
+  {
+   "file": "seq_0036.webp",
+   "bytes": 73126
+  },
+  {
+   "file": "seq_0037.webp",
+   "bytes": 69386
+  },
+  {
+   "file": "seq_0038.webp",
+   "bytes": 61286
+  },
+  {
+   "file": "seq_0039.webp",
+   "bytes": 62868
+  },
+  {
+   "file": "seq_0040.webp",
+   "bytes": 65176
+  },
+  {
+   "file": "seq_0041.webp",
+   "bytes": 72648
+  },
+  {
+   "file": "seq_0042.webp",
+   "bytes": 78634
+  },
+  {
+   "file": "seq_0043.webp",
+   "bytes": 57738
+  },
+  {
+   "file": "seq_0044.webp",
+   "bytes": 63980
+  },
+  {
+   "file": "seq_0045.webp",
+   "bytes": 69814
+  },
+  {
+   "file": "seq_0046.webp",
+   "bytes": 69232
+  },
+  {
+   "file": "seq_0047.webp",
+   "bytes": 71696
+  },
+  {
+   "file": "seq_0048.webp",
+   "bytes": 61188
+  },
+  {
+   "file": "seq_0049.webp",
+   "bytes": 73874
+  },
+  {
+   "file": "seq_0050.webp",
+   "bytes": 69624
+  },
+  {
+   "file": "seq_0051.webp",
+   "bytes": 77446
+  },
+  {
+   "file": "seq_0052.webp",
+   "bytes": 69046
+  },
+  {
+   "file": "seq_0053.webp",
+   "bytes": 73670
+  },
+  {
+   "file": "seq_0054.webp",
+   "bytes": 65450
+  },
+  {
+   "file": "seq_0055.webp",
+   "bytes": 70026
+  },
+  {
+   "file": "seq_0056.webp",
+   "bytes": 80846
+  },
+  {
+   "file": "seq_0057.webp",
+   "bytes": 80054
+  },
+  {
+   "file": "seq_0058.webp",
+   "bytes": 84994
+  },
+  {
+   "file": "seq_0059.webp",
+   "bytes": 83422
+  },
+  {
+   "file": "seq_0060.webp",
+   "bytes": 90272
+  },
+  {
+   "file": "seq_0061.webp",
+   "bytes": 86530
+  },
+  {
+   "file": "seq_0062.webp",
+   "bytes": 88370
+  },
+  {
+   "file": "seq_0063.webp",
+   "bytes": 71252
+  },
+  {
+   "file": "seq_0064.webp",
+   "bytes": 81984
+  },
+  {
+   "file": "seq_0065.webp",
+   "bytes": 80432
+  },
+  {
+   "file": "seq_0066.webp",
+   "bytes": 79856
+  },
+  {
+   "file": "seq_0067.webp",
+   "bytes": 70164
+  },
+  {
+   "file": "seq_0068.webp",
+   "bytes": 68048
+  },
+  {
+   "file": "seq_0069.webp",
+   "bytes": 69700
+  },
+  {
+   "file": "seq_0070.webp",
+   "bytes": 69744
+  },
+  {
+   "file": "seq_0071.webp",
+   "bytes": 73908
+  },
+  {
+   "file": "seq_0072.webp",
+   "bytes": 66130
+  },
+  {
+   "file": "seq_0073.webp",
+   "bytes": 59988
+  },
+  {
+   "file": "seq_0074.webp",
+   "bytes": 63462
+  },
+  {
+   "file": "seq_0075.webp",
+   "bytes": 71882
+  },
+  {
+   "file": "seq_0076.webp",
+   "bytes": 70784
+  },
+  {
+   "file": "seq_0077.webp",
+   "bytes": 78226
+  },
+  {
+   "file": "seq_0078.webp",
+   "bytes": 63082
+  },
+  {
+   "file": "seq_0079.webp",
+   "bytes": 57570
+  },
+  {
+   "file": "seq_0080.webp",
+   "bytes": 59942
+  },
+  {
+   "file": "seq_0081.webp",
+   "bytes": 66962
+  },
+  {
+   "file": "seq_0082.webp",
+   "bytes": 59952
+  },
+  {
+   "file": "seq_0083.webp",
+   "bytes": 63862
+  },
+  {
+   "file": "seq_0084.webp",
+   "bytes": 54084
+  },
+  {
+   "file": "seq_0085.webp",
+   "bytes": 50474
+  },
+  {
+   "file": "seq_0086.webp",
+   "bytes": 57242
+  },
+  {
+   "file": "seq_0087.webp",
+   "bytes": 56516
+  },
+  {
+   "file": "seq_0088.webp",
+   "bytes": 57450
+  },
+  {
+   "file": "seq_0089.webp",
+   "bytes": 58026
+  },
+  {
+   "file": "seq_0090.webp",
+   "bytes": 73342
+  },
+  {
+   "file": "seq_0091.webp",
+   "bytes": 84746
+  },
+  {
+   "file": "seq_0092.webp",
+   "bytes": 83536
+  },
+  {
+   "file": "seq_0093.webp",
+   "bytes": 82566
+  },
+  {
+   "file": "seq_0094.webp",
+   "bytes": 74848
+  },
+  {
+   "file": "seq_0095.webp",
+   "bytes": 51076
+  },
+  {
+   "file": "seq_0096.webp",
+   "bytes": 70500
+  },
+  {
+   "file": "seq_0097.webp",
+   "bytes": 58792
+  },
+  {
+   "file": "seq_0098.webp",
+   "bytes": 72458
+  },
+  {
+   "file": "seq_0099.webp",
+   "bytes": 72776
+  },
+  {
+   "file": "seq_0100.webp",
+   "bytes": 100994
+  },
+  {
+   "file": "seq_0101.webp",
+   "bytes": 108596
+  },
+  {
+   "file": "seq_0102.webp",
+   "bytes": 108814
+  },
+  {
+   "file": "seq_0103.webp",
+   "bytes": 99846
+  },
+  {
+   "file": "seq_0104.webp",
+   "bytes": 102056
+  },
+  {
+   "file": "seq_0105.webp",
+   "bytes": 106866
+  },
+  {
+   "file": "seq_0106.webp",
+   "bytes": 91918
+  },
+  {
+   "file": "seq_0107.webp",
+   "bytes": 78988
+  },
+  {
+   "file": "seq_0108.webp",
+   "bytes": 73332
+  },
+  {
+   "file": "seq_0109.webp",
+   "bytes": 58646
+  },
+  {
+   "file": "seq_0110.webp",
+   "bytes": 48202
+  },
+  {
+   "file": "seq_0111.webp",
+   "bytes": 59162
+  },
+  {
+   "file": "seq_0112.webp",
+   "bytes": 51138
+  },
+  {
+   "file": "seq_0113.webp",
+   "bytes": 61010
+  },
+  {
+   "file": "seq_0114.webp",
+   "bytes": 62674
+  },
+  {
+   "file": "seq_0115.webp",
+   "bytes": 79050
+  },
+  {
+   "file": "seq_0116.webp",
+   "bytes": 78288
+  },
+  {
+   "file": "seq_0117.webp",
+   "bytes": 72158
+  },
+  {
+   "file": "seq_0118.webp",
+   "bytes": 74878
+  },
+  {
+   "file": "seq_0119.webp",
+   "bytes": 77284
+  },
+  {
+   "file": "seq_0120.webp",
+   "bytes": 83416
+  },
+  {
+   "file": "seq_0121.webp",
+   "bytes": 89308
+  },
+  {
+   "file": "seq_0122.webp",
+   "bytes": 78906
+  },
+  {
+   "file": "seq_0123.webp",
+   "bytes": 78892
+  },
+  {
+   "file": "seq_0124.webp",
+   "bytes": 78750
+  },
+  {
+   "file": "seq_0125.webp",
+   "bytes": 73300
+  },
+  {
+   "file": "seq_0126.webp",
+   "bytes": 75834
+  },
+  {
+   "file": "seq_0127.webp",
+   "bytes": 72694
+  },
+  {
+   "file": "seq_0128.webp",
+   "bytes": 78476
+  },
+  {
+   "file": "seq_0129.webp",
+   "bytes": 70376
+  },
+  {
+   "file": "seq_0130.webp",
+   "bytes": 61034
+  },
+  {
+   "file": "seq_0131.webp",
+   "bytes": 68518
+  },
+  {
+   "file": "seq_0132.webp",
+   "bytes": 59664
+  },
+  {
+   "file": "seq_0133.webp",
+   "bytes": 57408
+  },
+  {
+   "file": "seq_0134.webp",
+   "bytes": 49444
+  },
+  {
+   "file": "seq_0135.webp",
+   "bytes": 42974
+  },
+  {
+   "file": "seq_0136.webp",
+   "bytes": 61864
+  },
+  {
+   "file": "seq_0137.webp",
+   "bytes": 48380
+  },
+  {
+   "file": "seq_0138.webp",
+   "bytes": 56954
+  },
+  {
+   "file": "seq_0139.webp",
+   "bytes": 53230
+  },
+  {
+   "file": "seq_0140.webp",
+   "bytes": 62956
+  },
+  {
+   "file": "seq_0141.webp",
+   "bytes": 70870
+  },
+  {
+   "file": "seq_0142.webp",
+   "bytes": 61036
+  },
+  {
+   "file": "seq_0143.webp",
+   "bytes": 61782
+  },
+  {
+   "file": "seq_0144.webp",
+   "bytes": 61370
+  },
+  {
+   "file": "seq_0145.webp",
+   "bytes": 65526
+  },
+  {
+   "file": "seq_0146.webp",
+   "bytes": 88028
+  },
+  {
+   "file": "seq_0147.webp",
+   "bytes": 94384
+  },
+  {
+   "file": "seq_0148.webp",
+   "bytes": 94244
+  },
+  {
+   "file": "seq_0149.webp",
+   "bytes": 97102
+  },
+  {
+   "file": "seq_0150.webp",
+   "bytes": 107738
+  },
+  {
+   "file": "seq_0151.webp",
+   "bytes": 97748
+  }
+ ]
+}

@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <script>document.documentElement.classList.add('js')</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NIGHTWATCH — Cyber attack awareness</title>
+  <meta name="description" content="A field guide to the attacks aimed at you — phishing, account takeover, ransomware, surveillance — and the moves that stop them. Built by white-hat hackers.">
+  <meta name="theme-color" content="#05060a">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27%3E%3Crect width=%2716%27 height=%2716%27 fill=%27%2305060a%27/%3E%3Cpath d=%27M3 12 L8 3 L13 12Z%27 fill=%27none%27 stroke=%27%232de2e6%27 stroke-width=%271.6%27/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="seq/poster.webp">
+  <link rel="stylesheet" href="css/style.css?v=5">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+<body>
+  <a class="skip" href="#after-story">Skip the story</a>
+
+  <div class="fx-grain" aria-hidden="true"></div>
+  <div class="fx-scan" aria-hidden="true"></div>
+  <canvas class="netfield" aria-hidden="true"></canvas>
+  <div class="cursor" aria-hidden="true"><span class="cursor__ring"></span><span class="cursor__xy">000·000</span></div>
+
+  <header class="nav">
+    <a class="nav__logo" href="#top" aria-label="NIGHTWATCH home">
+      <span class="nav__glyph" aria-hidden="true">◢◤</span>NIGHT<b>WATCH</b>
+    </a>
+    <nav aria-label="Sections">
+      <ul class="nav__links">
+        <li><a href="#story" data-scramble>Story</a></li>
+        <li><a href="#phish" data-scramble>Spot the phish</a></li>
+        <li><a href="#passlab" data-scramble>Password lab</a></li>
+        <li><a href="#protocol" data-scramble>Protocol</a></li>
+      </ul>
+    </nav>
+    <div class="nav__right">
+      <button class="chip" id="motionToggle" type="button" aria-pressed="true" title="Turn animation on or off">
+        <span class="chip__dot"></span><span class="chip__label">FX on</span>
+      </button>
+      <a class="btn btn--sm" href="#selfcheck">Self-check</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ============ THE STORY: the film scrubs with scroll ============ -->
+    <section class="story" id="story" aria-label="The story: four attacks, one city">
+      <div class="story__stage">
+        <img class="story__poster" src="seq/poster.webp" alt="" width="1920" height="1080">
+        <canvas class="story__canvas" aria-hidden="true"></canvas>
+        <div class="story__scrim" aria-hidden="true"></div>
+
+        <!-- HUD -->
+        <div class="hud" aria-hidden="true">
+          <span class="hud__corner hud__corner--tl"></span><span class="hud__corner hud__corner--tr"></span>
+          <span class="hud__corner hud__corner--bl"></span><span class="hud__corner hud__corner--br"></span>
+          <div class="hud__tl mono">
+            <span class="rec"></span>LIVE // SHINJUKU-07<br>
+            <span class="dim">FRM</span> <span id="hudFrame">005</span>/151 &nbsp;<span class="dim">T</span> <span id="hudTime">00:00.27</span> &nbsp;<span class="dim">STOP</span> <span id="hudStop">01</span>/11
+          </div>
+          <div class="hud__tr mono" id="bootLog"></div>
+          <div class="hud__rail">
+            <span class="hud__railfill" id="hudRail"></span>
+            <ol class="hud__marks mono" id="hudMarks"></ol>
+          </div>
+        </div>
+
+        <!-- Chapter copy (all readable without JS: stacked under the poster) -->
+        <div class="chapters">
+          <!-- data-stop = index in STOPS (js/main.js). data-label = HUD rail label (first stop of a chapter only). -->
+          <article class="ch ch--hero is-on" data-stop="0" data-label="Intro">
+            <p class="eyebrow mono"><span class="tag tag--cyan">WHITE HAT</span> Field guide · No. 01</p>
+            <h1 class="ch__title glitch" data-text="Stay one move ahead.">Stay one move ahead.</h1>
+            <p class="ch__lede">The city runs on data, and so do the people hunting it. Here are the attacks aimed at you, and the moves that stop them, from people who break into systems for a living, with permission.</p>
+            <p class="scrollcue mono"><span class="scrollcue__bar"></span>Scroll to run the sim</p>
+          </article>
+
+          <article class="ch" data-stop="1" data-label="Phish">
+            <p class="eyebrow mono"><span class="tag tag--red">THREAT 01</span> Phishing</p>
+            <h2 class="ch__title">It drives straight at you, looking normal.</h2>
+            <p class="ch__body">A parcel text. A bank alert. A boss in a hurry. Phishing wins on speed and panic.</p>
+          </article>
+
+          <article class="ch" data-stop="2">
+            <p class="eyebrow mono"><span class="tag tag--red">THREAT 01</span> Phishing · counter</p>
+            <h2 class="ch__title">Don't take the link. Step over it.</h2>
+            <p class="ch__body">Open the app, or type the address yourself. A real company never needs you to use the link in the message.</p>
+            <p class="ch__move mono"><span>▸ MOVE</span> Check the real sender address, then report and delete.</p>
+          </article>
+
+          <article class="ch" data-stop="3" data-label="Takeover">
+            <p class="eyebrow mono"><span class="tag tag--red">THREAT 02</span> Account takeover</p>
+            <h2 class="ch__title">One reused password is a wall they can climb.</h2>
+            <p class="ch__body">When one site leaks, attackers try that password everywhere else. Same password, same result: they're in everywhere.</p>
+            <p class="ch__move mono"><span>▸ MOVE</span> A unique password per site, plus two-factor sign-in.</p>
+          </article>
+
+          <article class="ch" data-stop="4" data-label="Breach">
+            <p class="eyebrow mono"><span class="tag tag--red">THREAT 03</span> Data breaches</p>
+            <h2 class="ch__title">Your details are already up here.</h2>
+            <p class="ch__body">Companies get breached. Emails, phone numbers and old passwords end up in lists traded online, and those lists are where every attack starts.</p>
+            <p class="ch__move mono"><span>▸ MOVE</span> Check if your email is in a known breach. Change every password it exposed.</p>
+          </article>
+
+          <article class="ch" data-stop="5" data-label="Impostor">
+            <p class="eyebrow mono"><span class="tag tag--red">THREAT 04</span> Impersonation</p>
+            <h2 class="ch__title">They jump the gap with a good story.</h2>
+            <p class="ch__body">A cloned voice. "Mum, it's my new number." A CEO who needs gift cards today. The story is the weapon.</p>
+            <p class="ch__move mono"><span>▸ MOVE</span> Hang up and call back on a number you already know.</p>
+          </article>
+
+          <article class="ch" data-stop="6" data-label="Ransom">
+            <p class="eyebrow mono"><span class="tag tag--red">THREAT 05</span> Ransomware</p>
+            <h2 class="ch__title">They chain your files and sell you the key.</h2>
+            <p class="ch__body">Ransomware encrypts everything it can reach, then asks for payment. Paying guarantees nothing.</p>
+          </article>
+
+          <article class="ch" data-stop="7">
+            <p class="eyebrow mono"><span class="tag tag--cyan">COUNTER</span> Ransomware</p>
+            <h2 class="ch__title">A backup is the blade.</h2>
+            <p class="ch__body">With a copy they can't reach, the lock means nothing: wipe, restore, move on. Updates keep most of it out in the first place.</p>
+            <p class="ch__move mono"><span>▸ MOVE</span> Turn on auto-updates. Keep one backup offline.</p>
+          </article>
+
+          <article class="ch" data-stop="8" data-label="Watched">
+            <p class="eyebrow mono"><span class="tag tag--red">THREAT 06</span> Surveillance</p>
+            <h2 class="ch__title">Something is always watching.</h2>
+            <p class="ch__body">Data brokers, trackers, apps that ask for more than they need. Every location tag tells them a bit more about you.</p>
+            <p class="ch__move mono"><span>▸ MOVE</span> Audit app permissions. Think before you post where you are.</p>
+          </article>
+
+          <article class="ch" data-stop="9">
+            <p class="eyebrow mono"><span class="tag tag--red">THREAT 06</span> Stalkerware</p>
+            <h2 class="ch__title">Take the eye out of your pocket.</h2>
+            <p class="ch__body">Fast battery drain, apps you didn't install, someone who knows things they shouldn't. Those are signs of stalkerware.</p>
+            <p class="ch__move mono"><span>▸ MOVE</span> Check which apps have admin or accessibility rights. If you feel unsafe, talk to a support line before removing anything.</p>
+          </article>
+
+          <article class="ch ch--end" data-stop="10" data-label="End">
+            <p class="eyebrow mono"><span class="tag tag--violet">SIM COMPLETE</span> Your turn</p>
+            <h2 class="ch__title glitch" data-text="Break the chain before it breaks you.">Break the chain before it breaks you.</h2>
+            <a class="btn" href="#phish">Start training <span aria-hidden="true">→</span></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div id="after-story"></div>
+
+    <!-- ============ TICKER ============ -->
+    <section class="ticker" aria-label="Common attack types">
+      <div class="ticker__track mono" aria-hidden="true">
+        <span>PHISHING</span><i>//</i><span>SMISHING</span><i>//</i><span>CREDENTIAL STUFFING</span><i>//</i><span>RANSOMWARE</span><i>//</i><span>SIM SWAP</span><i>//</i><span>STALKERWARE</span><i>//</i><span>FAKE INVOICES</span><i>//</i><span>QR TRAPS</span><i>//</i><span>VOICE CLONE SCAMS</span><i>//</i>
+        <span>PHISHING</span><i>//</i><span>SMISHING</span><i>//</i><span>CREDENTIAL STUFFING</span><i>//</i><span>RANSOMWARE</span><i>//</i><span>SIM SWAP</span><i>//</i><span>STALKERWARE</span><i>//</i><span>FAKE INVOICES</span><i>//</i><span>QR TRAPS</span><i>//</i><span>VOICE CLONE SCAMS</span><i>//</i>
+      </div>
+      <p class="sr-only">Common attacks: phishing, smishing, credential stuffing, ransomware, SIM swap, stalkerware, fake invoices, QR code traps, voice clone scams.</p>
+    </section>
+
+    <!-- ============ SPOT THE PHISH ============ -->
+    <section class="sec" id="phish" data-ghost="01" aria-labelledby="phishTitle">
+      <div class="sec__head reveal">
+        <p class="eyebrow mono"><span class="tag tag--cyan">TRAINING 01</span> Spot the phish</p>
+        <h2 class="sec__title" id="phishTitle">Five red flags are hiding in this email.<br><span class="dim">Click each one you spot.</span></h2>
+      </div>
+
+      <div class="phish reveal">
+        <div class="mail" id="mail">
+          <div class="stamp mono" id="stamp" aria-hidden="true">Threat<br>neutralised</div>
+          <div class="mail__bar mono"><span></span><span></span><span></span> inbox / unread</div>
+          <dl class="mail__meta">
+            <dt>From</dt>
+            <dd>NeoBank Security <button class="flag" data-flag="0" type="button">&lt;alerts@neobank-verify.help&gt;</button></dd>
+            <dt>Subject</dt>
+            <dd><button class="flag" data-flag="1" type="button">⚠ FINAL NOTICE: account suspended in 24 hours</button></dd>
+          </dl>
+          <div class="mail__body">
+            <p><button class="flag" data-flag="2" type="button">Dear valued customer,</button></p>
+            <p>We detected unusual sign-in activity on your account. To avoid permanent suspension, verify your identity immediately using the secure link below.</p>
+            <p><button class="flag flag--link" data-flag="3" type="button">Verify my account now</button> <span class="mail__hover mono" id="hoverUrl">→ http://neobank.account-check.ru/login</span></p>
+            <p>For your records, your statement is attached: <button class="flag flag--file mono" data-flag="4" type="button">📎 Statement_Oct.pdf.exe</button></p>
+            <p class="dim">NeoBank Security Team</p>
+          </div>
+        </div>
+
+        <aside class="intel" aria-live="polite">
+          <div class="intel__score mono"><span id="flagCount">0</span>/5 <span class="dim">flags found</span></div>
+          <div class="intel__bar"><span id="flagBar"></span></div>
+          <ol class="intel__list" id="flagList">
+            <li data-flag="0"><b>Lookalike domain.</b> The name says NeoBank, but the address is a random ".help" site. The address is what counts, not the name.</li>
+            <li data-flag="1"><b>Manufactured panic.</b> A deadline and capital letters are there to stop you thinking.</li>
+            <li data-flag="2"><b>No name.</b> Your real bank knows your name. "Dear customer" means a mass mailing.</li>
+            <li data-flag="3"><b>The link lies.</b> Hover before you click: it goes to a different domain. Open your bank's app yourself instead.</li>
+            <li data-flag="4"><b>Double extension.</b> ".pdf.exe" is a program dressed up as a document. Never open it.</li>
+          </ol>
+          <p class="intel__done mono" id="flagDone" hidden>▸ All five found. If you're unsure about a real email, contact the company through its official app or website, never through the email itself.</p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ============ PASSWORD LAB ============ -->
+    <section class="sec" id="passlab" data-ghost="02" aria-labelledby="passTitle">
+      <div class="sec__head reveal">
+        <p class="eyebrow mono"><span class="tag tag--cyan">TRAINING 02</span> Password lab</p>
+        <h2 class="sec__title" id="passTitle">How long would your password last?</h2>
+        <p class="sec__lede">Type a <em>test</em> password, not your real one. It never leaves this page: no network, no storage.</p>
+      </div>
+
+      <div class="lab reveal">
+        <div class="lab__console">
+          <label class="mono lab__label" for="pw">$ crack --estimate</label>
+          <div class="lab__field">
+            <input id="pw" type="password" autocomplete="off" spellcheck="false" placeholder="type a test password…">
+            <button class="lab__eye mono" id="pwEye" type="button" aria-pressed="false">show</button>
+          </div>
+          <div class="crack mono" id="crack" aria-hidden="true"><span class="crack__idle">[ idle ] waiting for a target…</span></div>
+          <div class="meter" aria-hidden="true"><span id="pwMeter"></span></div>
+          <div class="lab__out" aria-live="polite">
+            <p class="lab__verdict" id="pwVerdict">Waiting for input…</p>
+            <p class="mono dim" id="pwDetail">An offline attacker with a fast cracking rig: about 10 billion guesses per second.</p>
+          </div>
+          <ul class="lab__checks mono" id="pwChecks">
+            <li data-c="len">12+ characters</li>
+            <li data-c="mix">Mixed character types</li>
+            <li data-c="common">Not a common password</li>
+            <li data-c="pattern">No obvious patterns (1234, qwerty, repeats)</li>
+          </ul>
+        </div>
+        <div class="lab__gen">
+          <p class="eyebrow mono">Better move</p>
+          <h3>Use a passphrase: four random words.</h3>
+          <p>Easy to remember, slow to crack. Try the idea below.</p>
+          <div class="demo">
+            <p class="demo__note mono"><span class="tag tag--amber">Example only</span>This demo shows what a passphrase looks like. Don't use it for real accounts.</p>
+            <output class="phrase mono" id="phrase">—</output>
+            <button class="btn btn--ghost btn--sm" id="phraseBtn" type="button">Generate an example</button>
+          </div>
+          <div class="realtool">
+            <p class="realtool__kicker mono">▸ What we actually recommend</p>
+            <p class="realtool__big">Use a real password generator.</p>
+            <p>The one built into a password manager (Bitwarden, 1Password, KeePassXC, Apple Passwords or Google Password Manager) creates a different strong password for every site <em>and remembers it for you</em>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ DEFENSE PROTOCOL ============ -->
+    <section class="sec" id="protocol" data-ghost="03" aria-labelledby="protoTitle">
+      <div class="sec__head reveal">
+        <p class="eyebrow mono"><span class="tag tag--cyan">PROTOCOL</span> Six moves</p>
+        <h2 class="sec__title" id="protoTitle">Six moves that stop most attacks on ordinary people.</h2>
+      </div>
+      <ol class="cards">
+        <li class="card"><span class="card__n mono">01</span><h3>Turn on 2FA</h3><p>A code or key on top of your password. A stolen password alone stops working.</p><span class="card__k mono">→ email, bank, socials first</span></li>
+        <li class="card"><span class="card__n mono">02</span><h3>Use a password manager</h3><p>One strong master password; a unique random one for every site.</p><span class="card__k mono">→ ends password reuse</span></li>
+        <li class="card"><span class="card__n mono">03</span><h3>Update everything</h3><p>Updates close the holes attackers already know about. Turn on automatic updates.</p><span class="card__k mono">→ phone, laptop, router</span></li>
+        <li class="card"><span class="card__n mono">04</span><h3>Back up offline</h3><p>Three copies, two kinds of storage, one kept away from your computer.</p><span class="card__k mono">→ the 3-2-1 rule</span></li>
+        <li class="card"><span class="card__n mono">05</span><h3>Verify out of band</h3><p>Urgent money or password request? Call them back on a number you already know.</p><span class="card__k mono">→ beats voice-clone scams</span></li>
+        <li class="card"><span class="card__n mono">06</span><h3>Audit permissions</h3><p>Location, mic, contacts. Remove what an app doesn't need.</p><span class="card__k mono">→ every few months</span></li>
+      </ol>
+    </section>
+
+    <!-- ============ SELF-CHECK ============ -->
+    <section class="sec sec--check" id="selfcheck" data-ghost="04" aria-labelledby="checkTitle">
+      <div class="check">
+        <div class="check__intro reveal">
+          <p class="eyebrow mono"><span class="tag tag--violet">FINAL</span> Self-check</p>
+          <h2 class="sec__title" id="checkTitle">What's your security level?</h2>
+          <p class="sec__lede">Eight honest answers. Nothing is sent anywhere, and your score updates as you go.</p>
+          <div class="score" aria-live="polite">
+            <svg viewBox="0 0 120 120" class="score__ring" aria-hidden="true">
+              <circle cx="60" cy="60" r="52" class="score__track"/>
+              <circle cx="60" cy="60" r="52" class="score__fill" id="scoreFill"/>
+            </svg>
+            <div class="score__num"><span id="scoreNum">0</span><small>/100</small></div>
+            <p class="score__rank mono" id="scoreRank">STATUS: EXPOSED</p>
+          </div>
+        </div>
+        <form class="check__list reveal" id="checkForm">
+          <fieldset>
+            <legend class="sr-only">Security habits</legend>
+            <label class="q"><input type="checkbox" name="2fa" data-fix="Turn on two-factor sign-in for your email first: it's the key to every other account."><span class="q__box"></span>My email has two-factor sign-in</label>
+            <label class="q"><input type="checkbox" name="pm" data-fix="Install a password manager and move your five most important accounts into it this week."><span class="q__box"></span>I use a password manager</label>
+            <label class="q"><input type="checkbox" name="reuse" data-fix="Change any password you've used on more than one site, starting with email and banking."><span class="q__box"></span>I never reuse passwords</label>
+            <label class="q"><input type="checkbox" name="upd" data-fix="Turn on automatic updates on your phone, computer and browser."><span class="q__box"></span>My devices update automatically</label>
+            <label class="q"><input type="checkbox" name="bak" data-fix="Set up a backup, and keep one copy disconnected from your computer."><span class="q__box"></span>I have a backup that isn't always plugged in</label>
+            <label class="q"><input type="checkbox" name="verify" data-fix="Agree on a 'call-back' rule with family and colleagues for any urgent money request."><span class="q__box"></span>I verify urgent requests by calling back</label>
+            <label class="q"><input type="checkbox" name="perm" data-fix="Open your phone's privacy settings and remove location and mic access apps don't need."><span class="q__box"></span>I've checked my app permissions this year</label>
+            <label class="q"><input type="checkbox" name="lock" data-fix="Set a screen lock, and ask your carrier for a SIM / port-out PIN."><span class="q__box"></span>My phone has a screen lock and a SIM PIN</label>
+          </fieldset>
+          <div class="fixes">
+            <p class="eyebrow mono">Your next moves</p>
+            <ol id="fixList"></ol>
+          </div>
+          <div class="check__actions">
+            <button class="btn" id="copyBtn" type="button">Copy my checklist</button>
+            <button class="btn btn--ghost" type="reset">Reset</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="foot__hit">
+      <p class="eyebrow mono"><span class="tag tag--red">IF YOU'RE HIT</span> Three steps</p>
+      <ol class="foot__steps">
+        <li><b>Disconnect.</b> Take the device off Wi-Fi and the network.</li>
+        <li><b>Change passwords</b> from a different, clean device, starting with email.</li>
+        <li><b>Report it</b> to your bank and your national cybersecurity agency or police cybercrime unit.</li>
+      </ol>
+    </div>
+    <div class="foot__giant" aria-hidden="true"><span>NIGHTWATCH</span><span class="foot__fill">NIGHTWATCH</span></div>
+    <div class="foot__base mono">
+      <span>NIGHTWATCH // built by white hats, for everyone</span>
+      <span class="dim">[TEMP: organisation name, contact &amp; legal links]</span>
+      <span class="dim">Press <kbd>`</kbd> for the terminal</span>
+    </div>
+  </footer>
+
+  <!-- ============ TERMINAL (easter egg + nav) ============ -->
+  <button class="term-btn mono" id="termBtn" type="button" aria-controls="term" aria-expanded="false" title="Open terminal (`)">&gt;_</button>
+  <div class="term" id="term" role="dialog" aria-label="Terminal" hidden>
+    <div class="term__bar mono"><span>nightwatch@whitehat:~</span><button type="button" id="termClose" aria-label="Close terminal">×</button></div>
+    <div class="term__out mono" id="termOut" aria-live="polite"></div>
+    <form class="term__in mono" id="termForm"><span>$</span><input id="termInput" autocomplete="off" spellcheck="false" aria-label="Command"></form>
+  </div>
+
+  <script type="module" src="js/main.js?v=5"></script>
+</body>
+</html>

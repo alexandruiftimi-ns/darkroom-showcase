@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>NorthShutter Coffee</title>
+<meta name="description" content="Small-batch coffee, brewed slowly and served warm in a room full of afternoon light.">
+<meta name="theme-color" content="#0e0a07">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600&family=Instrument+Serif&display=swap">
+<link rel="preload" href="media/manifest.json" as="fetch" crossorigin>
+<link rel="stylesheet" href="vendor/lenis.css">
+<link rel="stylesheet" href="css/style.css">
+<script>
+  // decide before first paint: reduced motion gets a still hero
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches || /[?&]motion=off/.test(location.search)) document.documentElement.classList.add('rm');
+</script>
+</head>
+<body>
+
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader__inner">
+    <div class="loader__mark">NorthShutter</div>
+    <div class="loader__bar"><i></i></div>
+  </div>
+</div>
+
+<header class="nav" id="nav">
+  <a class="nav__brand" href="#top" aria-label="NorthShutter, back to top">NorthShutter</a>
+  <nav aria-label="Main">
+    <ul class="nav__links">
+      <li><a href="#coffee">Our coffee</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#locations">Locations</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+  <a class="btn" href="#locations">Visit us</a>
+</header>
+
+<main id="top">
+  <section class="hero" id="hero" aria-label="Introduction">
+    <div class="hero__stage">
+      <img class="hero__poster" id="poster" src="media/desktop/f/000.webp" alt="" fetchpriority="high">
+      <canvas class="hero__canvas" id="hero-canvas" aria-hidden="true"></canvas>
+      <div class="hero__scrim"></div>
+
+      <div class="hero__copy" id="hero-intro">
+        <span class="eyebrow">NorthShutter Coffee</span>
+        <h1>Everything else can wait.</h1>
+        <p class="hero__lede">Small-batch coffee, brewed slowly and served warm in a room full of afternoon light.</p>
+      </div>
+      <div class="hero__cap" id="cap-2" aria-hidden="true">
+        <span class="eyebrow">Roasted in small batches</span>
+        <p>One origin at a time, pulled by hand.</p>
+      </div>
+      <div class="hero__cap" id="cap-3" aria-hidden="true">
+        <span class="eyebrow">Keep scrolling</span>
+        <p>It hasn&rsquo;t landed yet.</p>
+      </div>
+
+      <div class="hero__cue" id="cue"><i></i>Scroll</div>
+      <a class="hero__skip" href="#coffee">Skip the intro</a>
+    </div>
+  </section>
+
+  <section class="section" id="coffee">
+    <div class="wrap">
+      <span class="eyebrow rv">01 &middot; Our coffee</span>
+      <h2 class="rv">Roasted light, so you can taste where it grew.</h2>
+      <p class="lede rv">We buy green coffee from a handful of farms we know by name, roast it in small batches and rest it before it reaches your cup. Nothing is rushed, because nothing has to be.</p>
+      <ul class="facts">
+        <li class="rv"><h3>Traceable</h3><p>Every bag names the farm, the region and the harvest.</p></li>
+        <li class="rv"><h3>Small batches</h3><p>Roasted in short runs, so every roast gets watched start to finish.</p></li>
+        <li class="rv"><h3>Brewed to order</h3><p>Espresso dialled in each morning. Filter made one cup at a time.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section--alt" id="menu">
+    <div class="wrap">
+      <span class="eyebrow rv">02 &middot; Menu</span>
+      <h2 class="rv">Short, on purpose.</h2>
+      <p class="lede rv">Ask the bar what&rsquo;s on the slow bar today. Oat, almond and whole milk at no extra cost.</p>
+      <div class="menu">
+        <div class="menu__group rv">
+          <h3>Espresso bar</h3>
+          <ul>
+            <li><b>Espresso</b><em>2.80</em><span>Double shot, house blend</span></li>
+            <li><b>Cortado</b><em>3.40</em><span>Equal parts espresso and milk</span></li>
+            <li><b>Flat white</b><em>3.80</em><span>Double shot, thin silky milk</span></li>
+            <li><b>Cappuccino</b><em>3.80</em><span>Deeper foam, cocoa on request</span></li>
+          </ul>
+        </div>
+        <div class="menu__group rv">
+          <h3>Slow bar</h3>
+          <ul>
+            <li><b>Pour-over</b><em>4.60</em><span>Single origin, brewed to order</span></li>
+            <li><b>Batch brew</b><em>3.20</em><span>Today&rsquo;s filter, refills welcome</span></li>
+            <li><b>Cold brew</b><em>4.20</em><span>Steeped overnight, served over ice</span></li>
+          </ul>
+        </div>
+        <div class="menu__group rv">
+          <h3>Not coffee</h3>
+          <ul>
+            <li><b>Matcha latte</b><em>4.40</em><span>Ceremonial grade, whisked</span></li>
+            <li><b>Chai</b><em>3.90</em><span>Spiced in house</span></li>
+            <li><b>Hot chocolate</b><em>3.90</em><span>Dark, not too sweet</span></li>
+          </ul>
+        </div>
+        <div class="menu__group rv">
+          <h3>To take home</h3>
+          <ul>
+            <li><b>Whole beans, 250 g</b><em>14.00</em><span>This month&rsquo;s origins, ground on request</span></li>
+            <li><b>House blend, 1 kg</b><em>42.00</em><span>For the office or the café at home</span></li>
+          </ul>
+        </div>
+      </div>
+      <p class="note rv">Sample menu and prices. Replace with your own.</p>
+    </div>
+  </section>
+
+  <section class="section" id="locations">
+    <div class="wrap">
+      <span class="eyebrow rv">03 &middot; Locations</span>
+      <h2 class="rv">Two rooms, the same light.</h2>
+      <p class="lede rv">Big windows, long tables, and a bar you can lean on while you wait.</p>
+    </div>
+    <figure class="photo rv">
+      <img src="media/desktop/plate-photo.webp" alt="The NorthShutter café in the afternoon: tables by tall windows and a long wooden bar." loading="lazy" width="2400" height="1350">
+      <figcaption>Harbour Street, mid-afternoon.</figcaption>
+    </figure>
+    <div class="wrap">
+      <div class="places">
+        <article class="place rv">
+          <h3>Harbour Street</h3>
+          <p>14 Harbour Street</p>
+          <dl><dt>Mon&ndash;Fri</dt><dd>7:00&ndash;18:00</dd><dt>Sat&ndash;Sun</dt><dd>8:00&ndash;17:00</dd></dl>
+          <a class="link" href="https://www.google.com/maps/search/?api=1&query=14+Harbour+Street" target="_blank" rel="noopener">Get directions</a>
+        </article>
+        <article class="place rv">
+          <h3>Old Town</h3>
+          <p>3 Linden Square</p>
+          <dl><dt>Mon&ndash;Fri</dt><dd>7:30&ndash;17:00</dd><dt>Sat&ndash;Sun</dt><dd>9:00&ndash;16:00</dd></dl>
+          <a class="link" href="https://www.google.com/maps/search/?api=1&query=3+Linden+Square" target="_blank" rel="noopener">Get directions</a>
+        </article>
+      </div>
+      <p class="note rv">Sample addresses and hours. Replace with your own.</p>
+    </div>
+  </section>
+
+  <section class="section section--alt contact" id="contact">
+    <div class="wrap">
+      <span class="eyebrow rv">04 &middot; Contact</span>
+      <h2 class="rv">Say hello.</h2>
+      <p class="lede rv">Wholesale, events, or a question about a roast. We read everything.</p>
+      <div class="contact__rows rv">
+        <a href="mailto:hello@northshutter.coffee"><span>Email</span><b>hello@northshutter.coffee</b></a>
+        <a href="tel:+10000000000"><span>Phone</span><b>+1 000 000 0000</b></a>
+        <a href="https://instagram.com/" target="_blank" rel="noopener"><span>Instagram</span><b>@northshutter</b></a>
+      </div>
+      <p class="note rv">Sample contact details. Replace with your own.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer__word" aria-hidden="true">NorthShutter</div>
+  <div class="footer__meta">
+    <span>&copy; 2026 NorthShutter Coffee</span>
+    <a href="#top">Back to top</a>
+  </div>
+</footer>
+
+<canvas class="cup" id="cup-canvas" aria-hidden="true"></canvas>
+
+<script src="vendor/lenis.min.js"></script>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
