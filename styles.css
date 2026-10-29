@@ -227,6 +227,16 @@ img, video { display: block; max-width: 100%; }
   font-family: var(--sans); color: var(--ink);
   transition: width 0.45s var(--ease), transform 0.4s var(--ease), background-color 0.3s, border-color 0.3s, color 0.3s;
 }
+/* A card's buttons point at their card: its preview gets a ring and the other cards step back */
+.card > * { transition: opacity 0.45s var(--ease); }
+.card__media { transition: box-shadow 0.45s var(--ease); }
+.grid:has(.act:focus-visible) .card:not(:has(.act:focus-visible)) > * { opacity: 0.35; }
+.card:has(.act:focus-visible) .card__media { box-shadow: 0 0 0 2px var(--ink), 0 30px 80px -40px rgba(0, 0, 0, 0.9); }
+@media (hover: hover) {
+  .grid:has(.act:hover) .card:not(:has(.act:hover)) > * { opacity: 0.35; }
+  .card:has(.act:hover) .card__media { box-shadow: 0 0 0 2px var(--ink), 0 30px 80px -40px rgba(0, 0, 0, 0.9); }
+  .card:has(.act:hover) .card__media video { transform: scale(1.025); }
+}
 .act.is-error { background: rgba(255, 77, 77, 0.14); border-color: #ff5a5a; color: #ff8f8f; }
 .act.is-ok { background: rgba(184, 242, 58, 0.1); border-color: var(--lime); color: var(--lime); }
 
