@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Little Chaos — Do Nothing. Beautifully.</title>
+<meta name="description" content="A ridiculously premium website dedicated to the art of doing absolutely nothing. Meet Blossom.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8C%BF%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+
+<div class="grain"></div>
+
+<nav class="nav">
+  <div class="nav__brand">
+    <span class="nav__dot"></span> Little Chaos
+  </div>
+  <div class="nav__links">
+    <a href="#leaderboard">Leaderboard</a>
+    <a href="#achievements">Achievements</a>
+    <a href="#distractions">Distractions</a>
+  </div>
+  <div class="nav__status" id="timeWasted">
+    <span class="nav__status-dot"></span>
+    <span id="timeWastedValue">00:00:00</span> wasted so far
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="hero">
+  <div class="hero__scene" id="heroScene" aria-hidden="true">
+    <img id="heroFrameBg" class="hero__frame-bg" src="assets/frames/desktop/frame-090.webp" alt="" draggable="false">
+    <img id="heroFrame" class="hero__frame" src="assets/frames/desktop/frame-090.webp" alt="" draggable="false">
+    <div class="hero__vignette"></div>
+  </div>
+
+  <div class="hero__content">
+    <p class="hero__eyebrow">A portfolio of productive avoidance</p>
+    <h1 class="hero__title">
+      <span class="line">Do nothing.</span>
+      <span class="line hero__title--accent">Beautifully.</span>
+    </h1>
+    <p class="hero__sub">Meet Blossom — a tiny forest spirit who has never finished a to-do list in its life. Move your cursor. It's watching you not work.</p>
+
+    <div class="hero__cta-zone" id="ctaZone">
+      <button class="cta-button" id="ctaButton" type="button">
+        <span id="ctaLabel">Start being productive</span>
+      </button>
+    </div>
+
+    <p class="hero__hint">psst — try clicking that button</p>
+  </div>
+
+  <div class="scroll-cue" aria-hidden="true">
+    <span>the chaos continues</span>
+    <div class="scroll-cue__line"></div>
+  </div>
+</header>
+
+<!-- ============ MANIFESTO ============ -->
+<section class="manifesto">
+  <p>
+    <span>In a world obsessed with hustle,</span>
+    <span>one small creature chose the stream, the breeze,</span>
+    <span>and the gentle art of <em>absolutely nothing</em>.</span>
+  </p>
+</section>
+
+<!-- ============ ACHIEVEMENTS ============ -->
+<section class="achievements" id="achievements">
+  <div class="section-head reveal">
+    <p class="section-eyebrow">Trophy case</p>
+    <h2>Achievements unlocked<br>for doing nothing at all</h2>
+  </div>
+
+  <div class="achievements__grid">
+    <article class="badge reveal">
+      <div class="badge__icon">🛋️</div>
+      <h3>Couch Fusion</h3>
+      <p>Became structurally one with the sofa for 3 consecutive hours.</p>
+      <span class="badge__rarity badge__rarity--common">Common</span>
+    </article>
+    <article class="badge reveal">
+      <div class="badge__icon">📑</div>
+      <h3>Tab Hoarder</h3>
+      <p>Reorganized 47 browser tabs instead of closing a single one.</p>
+      <span class="badge__rarity badge__rarity--common">Common</span>
+    </article>
+    <article class="badge reveal">
+      <div class="badge__icon">🎬</div>
+      <h3>Credits Connoisseur</h3>
+      <p>Watched the intro credits twice. On purpose. Both times.</p>
+      <span class="badge__rarity badge__rarity--rare">Rare</span>
+    </article>
+    <article class="badge reveal">
+      <div class="badge__icon">🐌</div>
+      <h3>Snail's Pace Prodigy</h3>
+      <p>Took four hours to reply "k" to a text.</p>
+      <span class="badge__rarity badge__rarity--rare">Rare</span>
+    </article>
+    <article class="badge reveal">
+      <div class="badge__icon">🌊</div>
+      <h3>Stream Whisperer</h3>
+      <p>Stared at flowing water instead of opening the spreadsheet.</p>
+      <span class="badge__rarity badge__rarity--epic">Epic</span>
+    </article>
+    <article class="badge reveal">
+      <div class="badge__icon">👑</div>
+      <h3>Deadline Dodger</h3>
+      <p>Postponed a task so gracefully it nearly looked intentional.</p>
+      <span class="badge__rarity badge__rarity--legendary">Legendary</span>
+    </article>
+  </div>
+</section>
+
+<!-- ============ LEADERBOARD ============ -->
+<section class="leaderboard" id="leaderboard">
+  <div class="section-head reveal">
+    <p class="section-eyebrow">Hall of fame</p>
+    <h2>The anti-productivity leaderboard</h2>
+    <p class="section-sub">Ranked by hours gracefully avoided. Updated the moment someone, somewhere, closes their laptop and doesn't.</p>
+  </div>
+
+  <ol class="rankings">
+    <li class="rankings__row reveal rankings__row--gold">
+      <span class="rankings__place">01</span>
+      <span class="rankings__avatar">🦊</span>
+      <span class="rankings__name">Blossom</span>
+      <span class="rankings__stat">14h 22m avoided</span>
+    </li>
+    <li class="rankings__row reveal">
+      <span class="rankings__place">02</span>
+      <span class="rankings__avatar">🦔</span>
+      <span class="rankings__name">A Very Tired Hedgehog</span>
+      <span class="rankings__stat">11h 05m avoided</span>
+    </li>
+    <li class="rankings__row reveal">
+      <span class="rankings__place">03</span>
+      <span class="rankings__avatar">🐢</span>
+      <span class="rankings__name">Steve (slow on purpose)</span>
+      <span class="rankings__stat">9h 40m avoided</span>
+    </li>
+    <li class="rankings__row reveal">
+      <span class="rankings__place">04</span>
+      <span class="rankings__avatar">🐑</span>
+      <span class="rankings__name">Napoleon Bunaparte</span>
+      <span class="rankings__stat">7h 58m avoided</span>
+    </li>
+    <li class="rankings__row reveal rankings__row--you" id="visitorRow">
+      <span class="rankings__place" id="visitorPlace">—</span>
+      <span class="rankings__avatar">👁️</span>
+      <span class="rankings__name">You, right now</span>
+      <span class="rankings__stat"><span id="visitorStat">00:00</span> and counting</span>
+    </li>
+  </ol>
+</section>
+
+<!-- ============ DISTRACTIONS ============ -->
+<section class="distractions" id="distractions">
+  <div class="section-head reveal">
+    <p class="section-eyebrow">Interactive nonsense</p>
+    <h2>Beautiful, pointless distractions</h2>
+  </div>
+
+  <div class="distractions__grid">
+
+    <div class="toy-card reveal">
+      <h3>The Productivity Dial</h3>
+      <p>Try to turn it up. We dare you.</p>
+      <div class="dial" id="dial">
+        <div class="dial__track">
+          <div class="dial__fill" id="dialFill"></div>
+          <div class="dial__handle" id="dialHandle"></div>
+        </div>
+        <div class="dial__labels">
+          <span>Chaotic</span>
+          <span>Productive</span>
+        </div>
+      </div>
+      <p class="toy-card__note" id="dialNote">currently: blissfully chaotic</p>
+    </div>
+
+    <div class="toy-card toy-card--leaf reveal">
+      <h3>The Unbothered Leaf</h3>
+      <p>Flick it. It has nowhere to be either.</p>
+      <div class="leaf-pond" id="leafPond">
+        <div class="leaf" id="leaf">🍃</div>
+      </div>
+    </div>
+
+    <div class="toy-card reveal">
+      <h3>Daily Affirmation Generator</h3>
+      <p>Click for a dose of zero motivation.</p>
+      <button class="affirm-button" id="affirmButton" type="button">Generate affirmation</button>
+      <p class="affirm-output" id="affirmOutput">"The to-do list will still be there tomorrow. So will you. Probably."</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ FOOTER / CTA ============ -->
+<footer class="footer">
+  <div class="footer__inner">
+    <h2 class="footer__title">Still here?</h2>
+    <p class="footer__sub">Good. That's the whole point.</p>
+
+    <form class="footer__form" id="newsletterForm">
+      <input type="email" placeholder="your@email.com" aria-label="Email address" required>
+      <button type="submit">Subscribe for updates</button>
+    </form>
+    <p class="footer__fineprint" id="newsletterNote">There won't be any updates. We're very committed to this.</p>
+
+    <div class="footer__bottom">
+      <span>© 2026 Little Chaos — a monument to doing nothing</span>
+      <span class="footer__brand">🌿 Blossom was here</span>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
