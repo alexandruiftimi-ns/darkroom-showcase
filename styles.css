@@ -137,6 +137,7 @@ img, video { display: block; max-width: 100%; }
 .hero__side { justify-self: end; max-width: 25em; padding-bottom: 0.5em; }
 .hero__lede { font-size: clamp(16px, 1.35vw, 20px); line-height: 1.5; color: #c4c1ba; text-wrap: pretty; }
 .hero__ctas { display: flex; margin-top: 24px; }
+.hero__note { margin-top: 18px; font-size: 17px; font-weight: 500; letter-spacing: -0.01em; line-height: 1.3; text-wrap: balance; }
 
 .strip__track { display: flex; gap: 8px; width: max-content; padding-left: var(--gutter); will-change: transform; }
 .frame { flex: none; display: block; width: clamp(280px, min(40vw, 62svh), 760px); transition: opacity 0.35s var(--ease); }
