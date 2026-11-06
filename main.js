@@ -7,6 +7,20 @@
   hero.querySelectorAll('[data-word], [data-rise]').forEach((el, i) => el.style.setProperty('--i', i));
   requestAnimationFrame(() => requestAnimationFrame(() => hero.classList.add('is-in')));
 
+  // The roll of stills advances with the scroll, like film through a gate. Reversible, and off for reduced motion.
+  const roll = document.querySelector('.strip__track');
+  if (!reduce) {
+    let queued = false;
+    const advance = () => {
+      queued = false;
+      roll.style.transform = `translate3d(${-Math.min(scrollY, innerHeight * 1.2) * 0.5}px, 0, 0)`;
+    };
+    addEventListener('scroll', () => {
+      if (!queued) { queued = true; requestAnimationFrame(advance); }
+    }, { passive: true });
+    advance();
+  }
+
   // Scroll reveals, staggered within each row
   const reveal = new IntersectionObserver((entries) => {
     entries.filter((e) => e.isIntersecting).forEach((e, i) => {
