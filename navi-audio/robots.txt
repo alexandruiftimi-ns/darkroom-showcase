@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://naviaudioretrofitsbotosani.netlify.app/sitemap.xml
+Sitemap: https://alexandruiftimi-ns.github.io/darkroom-showcase/navi-audio/sitemap.xml
